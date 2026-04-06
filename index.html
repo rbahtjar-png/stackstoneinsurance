@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>StackStone Insurance Solutions | Retirement Planning | Clermont, FL</title>
+  <meta name="description" content="StackStone Insurance Solutions helps retirees in Clermont, FL protect their future with Medicare planning, life insurance, long-term care, and annuity reviews. Free in-home consultations."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --charcoal: #1c1c1c;
+      --charcoal-2: #252525;
+      --charcoal-3: #2f2f2f;
+      --green: #2e8b57;
+      --green-light: #3cb371;
+      --green-pale: #1a4d33;
+      --cream: #f5f0e8;
+      --cream-2: #ede8df;
+      --gray: #aaaaaa;
+      --gray-2: #666666;
+      --white: #ffffff;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--charcoal);
+      color: var(--cream);
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 60px;
+      background: rgba(28,28,28,0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(46,139,87,0.2);
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .nav-stones {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .nav-stones span {
+      display: block;
+      background: var(--green);
+      border-radius: 2px;
+      height: 5px;
+    }
+
+    .nav-stones span:nth-child(1) { width: 28px; }
+    .nav-stones span:nth-child(2) { width: 22px; background: var(--green-light); }
+    .nav-stones span:nth-child(3) { width: 16px; }
+
+    .nav-brand {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: var(--cream);
+    }
+
+    .nav-brand span { color: var(--green-light); }
+
+    .nav-cta {
+      background: var(--green);
+      color: var(--white);
+      border: none;
+      padding: 10px 24px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 1px;
+      cursor: pointer;
+      border-radius: 2px;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+
+    .nav-cta:hover { background: var(--green-light); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 120px 60px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0; right: 0;
+      width: 50%;
+      height: 100%;
+      background: linear-gradient(135deg, transparent 0%, rgba(46,139,87,0.06) 100%);
+      pointer-events: none;
+    }
+
+    .hero-stones {
+      position: absolute;
+      right: 8%;
+      top: 50%;
+      transform: translateY(-50%);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      opacity: 0.15;
+    }
+
+    .hero-stones div {
+      background: var(--green);
+      border-radius: 6px;
+      height: 36px;
+    }
+
+    .hero-content { max-width: 680px; position: relative; z-index: 2; }
+
+    .hero-eyebrow {
+      font-size: 12px;
+      letter-spacing: 4px;
+      color: var(--green-light);
+      text-transform: uppercase;
+      margin-bottom: 24px;
+      font-weight: 500;
+    }
+
+    .hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(48px, 6vw, 80px);
+      font-weight: 700;
+      line-height: 1.05;
+      color: var(--cream);
+      margin-bottom: 28px;
+    }
+
+    .hero h1 em {
+      font-style: normal;
+      color: var(--green-light);
+    }
+
+    .hero-sub {
+      font-size: 17px;
+      font-weight: 300;
+      color: var(--gray);
+      line-height: 1.7;
+      margin-bottom: 48px;
+      max-width: 520px;
+    }
+
+    .hero-actions { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+
+    .btn-primary {
+      background: var(--green);
+      color: var(--white);
+      padding: 16px 36px;
+      font-size: 15px;
+      font-weight: 500;
+      letter-spacing: 1px;
+      border: none;
+      border-radius: 2px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.2s;
+      display: inline-block;
+    }
+
+    .btn-primary:hover { background: var(--green-light); transform: translateY(-1px); }
+
+    .btn-secondary {
+      color: var(--cream);
+      font-size: 15px;
+      font-weight: 400;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(245,240,232,0.3);
+      padding-bottom: 2px;
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .btn-secondary:hover { color: var(--green-light); border-color: var(--green-light); }
+
+    .hero-trust {
+      margin-top: 64px;
+      display: flex;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+
+    .trust-item { display: flex; flex-direction: column; gap: 4px; }
+
+    .trust-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 36px;
+      font-weight: 700;
+      color: var(--green-light);
+      line-height: 1;
+    }
+
+    .trust-label {
+      font-size: 12px;
+      letter-spacing: 2px;
+      color: var(--gray);
+      text-transform: uppercase;
+    }
+
+    /* ── DIVIDER ── */
+    .divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(46,139,87,0.4), transparent);
+      margin: 0 60px;
+    }
+
+    /* ── SERVICES ── */
+    .services {
+      padding: 100px 60px;
+    }
+
+    .section-label {
+      font-size: 11px;
+      letter-spacing: 4px;
+      color: var(--green-light);
+      text-transform: uppercase;
+      margin-bottom: 16px;
+      font-weight: 500;
+    }
+
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(36px, 4vw, 54px);
+      font-weight: 700;
+      color: var(--cream);
+      margin-bottom: 60px;
+      max-width: 600px;
+      line-height: 1.15;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 2px;
+    }
+
+    .service-card {
+      background: var(--charcoal-2);
+      padding: 40px 36px;
+      border-top: 3px solid transparent;
+      transition: border-color 0.3s, background 0.3s;
+      position: relative;
+    }
+
+    .service-card:hover {
+      border-top-color: var(--green);
+      background: var(--charcoal-3);
+    }
+
+    .service-icon {
+      width: 40px;
+      height: 40px;
+      margin-bottom: 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      gap: 4px;
+    }
+
+    .service-icon div {
+      background: var(--green);
+      border-radius: 2px;
+      height: 6px;
+    }
+
+    .service-icon div:nth-child(1) { width: 100%; }
+    .service-icon div:nth-child(2) { width: 75%; background: var(--green-light); }
+    .service-icon div:nth-child(3) { width: 50%; }
+
+    .service-card h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 24px;
+      font-weight: 600;
+      color: var(--cream);
+      margin-bottom: 14px;
+    }
+
+    .service-card p {
+      font-size: 14px;
+      font-weight: 300;
+      color: var(--gray);
+      line-height: 1.75;
+    }
+
+    /* ── HOW IT WORKS ── */
+    .how {
+      padding: 100px 60px;
+      background: var(--charcoal-2);
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 48px;
+      margin-top: 60px;
+    }
+
+    .step { position: relative; }
+
+    .step-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 64px;
+      font-weight: 700;
+      color: rgba(46,139,87,0.15);
+      line-height: 1;
+      margin-bottom: 16px;
+    }
+
+    .step h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px;
+      font-weight: 600;
+      color: var(--cream);
+      margin-bottom: 12px;
+    }
+
+    .step p {
+      font-size: 14px;
+      color: var(--gray);
+      line-height: 1.75;
+      font-weight: 300;
+    }
+
+    /* ── WHY ── */
+    .why {
+      padding: 100px 60px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .why-content h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(36px, 3.5vw, 50px);
+      font-weight: 700;
+      color: var(--cream);
+      line-height: 1.15;
+      margin-bottom: 28px;
+    }
+
+    .why-content h2 em {
+      font-style: normal;
+      color: var(--green-light);
+    }
+
+    .why-content p {
+      font-size: 15px;
+      color: var(--gray);
+      line-height: 1.8;
+      font-weight: 300;
+      margin-bottom: 20px;
+    }
+
+    .why-points { display: flex; flex-direction: column; gap: 20px; }
+
+    .why-point {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+
+    .why-dot {
+      width: 8px;
+      height: 8px;
+      background: var(--green);
+      border-radius: 50%;
+      margin-top: 7px;
+      flex-shrink: 0;
+    }
+
+    .why-point p {
+      font-size: 15px;
+      color: var(--cream-2);
+      line-height: 1.6;
+      margin: 0;
+      font-weight: 400;
+    }
+
+    .why-visual {
+      background: var(--charcoal-2);
+      padding: 48px;
+      border-left: 4px solid var(--green);
+      position: relative;
+    }
+
+    .why-visual::before {
+      content: '"';
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 120px;
+      color: rgba(46,139,87,0.1);
+      position: absolute;
+      top: -10px;
+      left: 30px;
+      line-height: 1;
+    }
+
+    .why-quote {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px;
+      font-weight: 600;
+      color: var(--cream);
+      line-height: 1.5;
+      margin-bottom: 24px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .why-attr {
+      font-size: 13px;
+      color: var(--green-light);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    /* ── OPT-IN / CONTACT ── */
+    .optin {
+      padding: 100px 60px;
+      background: var(--charcoal-2);
+    }
+
+    .optin-inner {
+      max-width: 680px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .optin-inner h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(36px, 4vw, 52px);
+      font-weight: 700;
+      color: var(--cream);
+      margin-bottom: 16px;
+      line-height: 1.15;
+    }
+
+    .optin-inner p {
+      font-size: 15px;
+      color: var(--gray);
+      line-height: 1.7;
+      margin-bottom: 40px;
+      font-weight: 300;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .form-field {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      text-align: left;
+    }
+
+    .form-field label {
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gray);
+      font-weight: 500;
+    }
+
+    .form-field input,
+    .form-field select {
+      background: var(--charcoal-3);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 2px;
+      padding: 14px 16px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px;
+      color: var(--cream);
+      outline: none;
+      transition: border-color 0.2s;
+      width: 100%;
+      -webkit-appearance: none;
+    }
+
+    .form-field input:focus,
+    .form-field select:focus {
+      border-color: var(--green);
+    }
+
+    .form-field select option { background: var(--charcoal-3); }
+
+    .form-full { grid-column: 1 / -1; }
+
+    .form-submit {
+      width: 100%;
+      background: var(--green);
+      color: var(--white);
+      border: none;
+      padding: 18px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px;
+      font-weight: 500;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      cursor: pointer;
+      border-radius: 2px;
+      margin-top: 8px;
+      transition: background 0.2s;
+    }
+
+    .form-submit:hover { background: var(--green-light); }
+
+    .consent {
+      margin-top: 20px;
+      font-size: 12px;
+      color: var(--gray-2);
+      line-height: 1.7;
+      text-align: center;
+    }
+
+    .consent a { color: var(--gray); text-decoration: underline; }
+
+    /* Success message */
+    .success-msg {
+      display: none;
+      background: rgba(46,139,87,0.15);
+      border: 1px solid var(--green);
+      padding: 24px;
+      border-radius: 2px;
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .success-msg p {
+      color: var(--green-light);
+      font-size: 15px;
+      margin: 0;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 48px 60px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: gap;
+      gap: 20px;
+    }
+
+    .footer-brand {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: var(--cream);
+    }
+
+    .footer-brand span { color: var(--green-light); }
+
+    .footer-info {
+      font-size: 13px;
+      color: var(--gray-2);
+      line-height: 1.7;
+      text-align: center;
+    }
+
+    .footer-contact {
+      font-size: 13px;
+      color: var(--gray);
+      text-align: right;
+    }
+
+    .footer-contact a {
+      color: var(--green-light);
+      text-decoration: none;
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-eyebrow { animation: fadeUp 0.6s ease both; }
+    .hero h1 { animation: fadeUp 0.6s 0.1s ease both; }
+    .hero-sub { animation: fadeUp 0.6s 0.2s ease both; }
+    .hero-actions { animation: fadeUp 0.6s 0.3s ease both; }
+    .hero-trust { animation: fadeUp 0.6s 0.4s ease both; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      nav { padding: 18px 24px; }
+      .hero { padding: 100px 24px 60px; }
+      .hero-stones { display: none; }
+      .divider { margin: 0 24px; }
+      .services, .how, .optin { padding: 72px 24px; }
+      .why { grid-template-columns: 1fr; padding: 72px 24px; gap: 48px; }
+      .form-row { grid-template-columns: 1fr; }
+      footer { padding: 40px 24px; flex-direction: column; text-align: center; }
+      .footer-contact { text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    <div class="nav-stones">
+      <span></span><span></span><span></span>
+    </div>
+    <div class="nav-brand">STACKSTONE <span>INSURANCE</span></div>
+  </div>
+  <a href="#contact" class="nav-cta">FREE CONSULTATION</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-stones">
+    <div style="width:280px"></div>
+    <div style="width:240px;background:#3cb371"></div>
+    <div style="width:200px"></div>
+    <div style="width:160px;background:#3cb371"></div>
+  </div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">Clermont, FL &nbsp;·&nbsp; Retirement Specialist</p>
+    <h1>Protect the life<br/>you <em>worked</em><br/>to build.</h1>
+    <p class="hero-sub">Medicare, life insurance, long-term care, and annuity planning — done in one free in-home visit. No pressure. Just clarity on where you stand.</p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn-primary">BOOK FREE REVIEW</a>
+      <a href="#services" class="btn-secondary">See what we cover</a>
+    </div>
+    <div class="hero-trust">
+      <div class="trust-item">
+        <span class="trust-num">Free</span>
+        <span class="trust-label">In-Home Visit</span>
+      </div>
+      <div class="trust-item">
+        <span class="trust-num">126</span>
+        <span class="trust-label">Pages Simplified</span>
+      </div>
+      <div class="trust-item">
+        <span class="trust-num">4</span>
+        <span class="trust-label">Coverage Areas</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <p class="section-label">What We Cover</p>
+  <h2 class="section-title">Every coverage gap, closed.</h2>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-icon"><div></div><div></div><div></div></div>
+      <h3>Medicare Planning</h3>
+      <p>Turning 65 or already on Medicare? We cut through all 126 pages and find the plan that fits your doctors, your budget, and your life — not just the lowest premium.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon"><div></div><div></div><div></div></div>
+      <h3>Life Insurance</h3>
+      <p>Your employer coverage disappears the day you retire. We lock in a personal policy at the best possible rate before a health event changes everything.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon"><div></div><div></div><div></div></div>
+      <h3>Long-Term Care</h3>
+      <p>Medicare pays nothing for nursing homes or in-home care. The average lifetime cost is $274,000. A long-term care plan transfers that risk so your savings stay yours.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon"><div></div><div></div><div></div></div>
+      <h3>Annuity Review</h3>
+      <p>Annuity rates are at historic highs. If your policy is more than 3 years old you may be leaving significant guaranteed income on the table. We review it for free.</p>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- HOW IT WORKS -->
+<section class="how" id="how">
+  <p class="section-label">The Process</p>
+  <h2 class="section-title">One meeting. Complete picture.</h2>
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">01</div>
+      <h3>You Reach Out</h3>
+      <p>Fill out the form below or text directly. We schedule a time that works for you — at your home, on your schedule.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">02</div>
+      <h3>Free In-Home Visit</h3>
+      <p>Bati comes to you. No office, no commute. We review your current coverage, your retirement plan, and your goals in about an hour.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">03</div>
+      <h3>Clear Recommendations</h3>
+      <p>You leave with a plain-English picture of where you stand and exactly what options are available to you. Zero pressure.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">04</div>
+      <h3>You Decide</h3>
+      <p>If something makes sense, we move forward. If not, you walk away with more clarity than you had before. Either way you win.</p>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- WHY -->
+<section class="why" id="why">
+  <div class="why-content">
+    <p class="section-label">Why StackStone</p>
+    <h2>You built this.<br/>Don't let the wrong<br/><em>plan take it.</em></h2>
+    <div class="why-points">
+      <div class="why-point">
+        <div class="why-dot"></div>
+        <p>I come to you — no office visits, no wasted time, no pressure environment.</p>
+      </div>
+      <div class="why-point">
+        <div class="why-dot"></div>
+        <p>I work with multiple carriers so you get the best plan, not the one that pays me the most.</p>
+      </div>
+      <div class="why-point">
+        <div class="why-dot"></div>
+        <p>I specialize in retirement-age coverage — this is all I do, and I know it inside and out.</p>
+      </div>
+      <div class="why-point">
+        <div class="why-dot"></div>
+        <p>Every consultation is completely free. My compensation comes from the carrier, never from you.</p>
+      </div>
+    </div>
+  </div>
+  <div class="why-visual">
+    <p class="why-quote">Most people spend more time planning their vacation than their retirement coverage. By the time they realize there is a gap, it is too late to fix it at a good rate.</p>
+    <p class="why-attr">Bati Rexha &nbsp;·&nbsp; Retirement Specialist, Clermont FL</p>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- OPT-IN FORM -->
+<section class="optin" id="contact">
+  <div class="optin-inner">
+    <p class="section-label">Get Started</p>
+    <h2>Book Your Free<br/>Coverage Review</h2>
+    <p>Fill out the form and Bati will reach out within 24 hours to schedule your free in-home visit. You may also receive a follow-up text message from our team.</p>
+
+    <form id="contactForm" onsubmit="handleSubmit(event)">
+      <div class="form-row">
+        <div class="form-field">
+          <label>First Name</label>
+          <input type="text" name="firstName" placeholder="John" required/>
+        </div>
+        <div class="form-field">
+          <label>Last Name</label>
+          <input type="text" name="lastName" placeholder="Smith" required/>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-field">
+          <label>Phone Number</label>
+          <input type="tel" name="phone" placeholder="(352) 555-0100" required/>
+        </div>
+        <div class="form-field">
+          <label>Age Range</label>
+          <select name="age" required>
+            <option value="" disabled selected>Select your age</option>
+            <option value="59-64">59 to 64</option>
+            <option value="65">Turning 65</option>
+            <option value="65-74">65 to 74</option>
+            <option value="75+">75 or older</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-field form-full">
+          <label>What can we help you with?</label>
+          <select name="interest" required>
+            <option value="" disabled selected>Select a topic</option>
+            <option value="medicare">Medicare Planning</option>
+            <option value="life">Life Insurance</option>
+            <option value="ltc">Long-Term Care</option>
+            <option value="annuity">Annuity Review</option>
+            <option value="all">Full Retirement Review</option>
+          </select>
+        </div>
+      </div>
+      <button type="submit" class="form-submit">REQUEST FREE CONSULTATION</button>
+    </form>
+
+    <div class="success-msg" id="successMsg">
+      <p>Thank you! Bati will reach out within 24 hours to schedule your free in-home visit.</p>
+    </div>
+
+    <p class="consent">By submitting this form, you agree to be contacted by StackStone Insurance Solutions via phone and/or text message at the number provided. Message and data rates may apply. Message frequency varies. You may opt out at any time by replying STOP. This is not a commitment to purchase any product or service. See our <a href="#privacy">privacy policy</a> below.</p>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PRIVACY POLICY (required for TCR) -->
+<section id="privacy" style="padding: 60px 60px; max-width: 800px; margin: 0 auto;">
+  <p class="section-label">Privacy Policy</p>
+  <p style="font-size:13px; color:var(--gray-2); line-height:1.8; margin-bottom:16px;">
+    <strong style="color:var(--gray);">Last updated: 2026</strong>
+  </p>
+  <p style="font-size:13px; color:var(--gray-2); line-height:1.8; margin-bottom:12px;">
+    StackStone Insurance Solutions ("we", "us", or "our") collects your name, phone number, and coverage interests when you submit the form above. This information is used solely to contact you about insurance and retirement planning services.
+  </p>
+  <p style="font-size:13px; color:var(--gray-2); line-height:1.8; margin-bottom:12px;">
+    <strong style="color:var(--gray);">SMS Communications:</strong> By submitting the contact form, you expressly consent to receive text messages from StackStone Insurance Solutions at the phone number you provided. Message frequency will vary. Message and data rates may apply. To opt out, reply STOP to any message. To get help, reply HELP.
+  </p>
+  <p style="font-size:13px; color:var(--gray-2); line-height:1.8; margin-bottom:12px;">
+    We do not sell, share, or distribute your personal information to third parties. Your information is kept confidential and used only for the purpose of scheduling and conducting your free insurance consultation.
+  </p>
+  <p style="font-size:13px; color:var(--gray-2); line-height:1.8;">
+    For questions, contact us at stackstonellc@gmail.com or (352) 718-2629.
+  </p>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">STACKSTONE <span>INSURANCE</span></div>
+  <div class="footer-info">
+    &copy; 2026 StackStone Insurance Solutions &nbsp;·&nbsp; Clermont, FL<br/>
+    Licensed Insurance Agent &nbsp;·&nbsp; All consultations are free and no-obligation
+  </div>
+  <div class="footer-contact">
+    <a href="tel:3527182629">(352) 718-2629</a><br/>
+    <a href="mailto:stackstonellc@gmail.com">stackstonellc@gmail.com</a>
+  </div>
+</footer>
+
+<script>
+  function handleSubmit(e) {
+    e.preventDefault();
+    document.getElementById('contactForm').style.display = 'none';
+    document.getElementById('successMsg').style.display = 'block';
+  }
+</script>
+
+</body>
+</html>
