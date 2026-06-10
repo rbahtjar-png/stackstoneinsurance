@@ -1,870 +1,1007 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>StackStone Insurance Solutions | Retirement Planning | Clermont, FL</title>
-  <meta name="description" content="StackStone Insurance Solutions helps retirees in Clermont, FL protect their future with Medicare planning, life insurance, long-term care, and annuity reviews. Free in-home consultations."/>
-  <link rel="preconnect" href="https://fonts.googleapis.com"/>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    :root {
-      --charcoal: #1c1c1c;
-      --charcoal-2: #252525;
-      --charcoal-3: #2f2f2f;
-      --green: #2e8b57;
-      --green-light: #3cb371;
-      --green-pale: #1a4d33;
-      --cream: #f5f0e8;
-      --cream-2: #ede8df;
-      --gray: #aaaaaa;
-      --gray-2: #666666;
-      --white: #ffffff;
-    }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      font-family: 'DM Sans', sans-serif;
-      background: var(--charcoal);
-      color: var(--cream);
-      overflow-x: hidden;
-    }
-
-    /* ── NAV ── */
-    nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 100;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 20px 60px;
-      background: rgba(28,28,28,0.95);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid rgba(46,139,87,0.2);
-    }
-
-    .nav-logo {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-    }
-
-    .nav-stones {
-      display: flex;
-      flex-direction: column;
-      gap: 3px;
-    }
-
-    .nav-stones span {
-      display: block;
-      background: var(--green);
-      border-radius: 2px;
-      height: 5px;
-    }
-
-    .nav-stones span:nth-child(1) { width: 28px; }
-    .nav-stones span:nth-child(2) { width: 22px; background: var(--green-light); }
-    .nav-stones span:nth-child(3) { width: 16px; }
-
-    .nav-brand {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 20px;
-      font-weight: 700;
-      letter-spacing: 2px;
-      color: var(--cream);
-    }
-
-    .nav-brand span { color: var(--green-light); }
-
-    .nav-cta {
-      background: var(--green);
-      color: var(--white);
-      border: none;
-      padding: 10px 24px;
-      font-family: 'DM Sans', sans-serif;
-      font-size: 14px;
-      font-weight: 500;
-      letter-spacing: 1px;
-      cursor: pointer;
-      border-radius: 2px;
-      text-decoration: none;
-      transition: background 0.2s;
-    }
-
-    .nav-cta:hover { background: var(--green-light); }
-
-    /* ── HERO ── */
-    .hero {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      padding: 120px 60px 80px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero::before {
-      content: '';
-      position: absolute;
-      top: 0; right: 0;
-      width: 50%;
-      height: 100%;
-      background: linear-gradient(135deg, transparent 0%, rgba(46,139,87,0.06) 100%);
-      pointer-events: none;
-    }
-
-    .hero-stones {
-      position: absolute;
-      right: 8%;
-      top: 50%;
-      transform: translateY(-50%);
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      opacity: 0.15;
-    }
-
-    .hero-stones div {
-      background: var(--green);
-      border-radius: 6px;
-      height: 36px;
-    }
-
-    .hero-content { max-width: 680px; position: relative; z-index: 2; }
-
-    .hero-eyebrow {
-      font-size: 12px;
-      letter-spacing: 4px;
-      color: var(--green-light);
-      text-transform: uppercase;
-      margin-bottom: 24px;
-      font-weight: 500;
-    }
-
-    .hero h1 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(48px, 6vw, 80px);
-      font-weight: 700;
-      line-height: 1.05;
-      color: var(--cream);
-      margin-bottom: 28px;
-    }
-
-    .hero h1 em {
-      font-style: normal;
-      color: var(--green-light);
-    }
-
-    .hero-sub {
-      font-size: 17px;
-      font-weight: 300;
-      color: var(--gray);
-      line-height: 1.7;
-      margin-bottom: 48px;
-      max-width: 520px;
-    }
-
-    .hero-actions { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
-
-    .btn-primary {
-      background: var(--green);
-      color: var(--white);
-      padding: 16px 36px;
-      font-size: 15px;
-      font-weight: 500;
-      letter-spacing: 1px;
-      border: none;
-      border-radius: 2px;
-      cursor: pointer;
-      text-decoration: none;
-      transition: background 0.2s, transform 0.2s;
-      display: inline-block;
-    }
-
-    .btn-primary:hover { background: var(--green-light); transform: translateY(-1px); }
-
-    .btn-secondary {
-      color: var(--cream);
-      font-size: 15px;
-      font-weight: 400;
-      text-decoration: none;
-      border-bottom: 1px solid rgba(245,240,232,0.3);
-      padding-bottom: 2px;
-      transition: border-color 0.2s, color 0.2s;
-    }
-
-    .btn-secondary:hover { color: var(--green-light); border-color: var(--green-light); }
-
-    .hero-trust {
-      margin-top: 64px;
-      display: flex;
-      gap: 40px;
-      flex-wrap: wrap;
-    }
-
-    .trust-item { display: flex; flex-direction: column; gap: 4px; }
-
-    .trust-num {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 36px;
-      font-weight: 700;
-      color: var(--green-light);
-      line-height: 1;
-    }
-
-    .trust-label {
-      font-size: 12px;
-      letter-spacing: 2px;
-      color: var(--gray);
-      text-transform: uppercase;
-    }
-
-    /* ── DIVIDER ── */
-    .divider {
-      height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(46,139,87,0.4), transparent);
-      margin: 0 60px;
-    }
-
-    /* ── SERVICES ── */
-    .services {
-      padding: 100px 60px;
-    }
-
-    .section-label {
-      font-size: 11px;
-      letter-spacing: 4px;
-      color: var(--green-light);
-      text-transform: uppercase;
-      margin-bottom: 16px;
-      font-weight: 500;
-    }
-
-    .section-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(36px, 4vw, 54px);
-      font-weight: 700;
-      color: var(--cream);
-      margin-bottom: 60px;
-      max-width: 600px;
-      line-height: 1.15;
-    }
-
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 2px;
-    }
-
-    .service-card {
-      background: var(--charcoal-2);
-      padding: 40px 36px;
-      border-top: 3px solid transparent;
-      transition: border-color 0.3s, background 0.3s;
-      position: relative;
-    }
-
-    .service-card:hover {
-      border-top-color: var(--green);
-      background: var(--charcoal-3);
-    }
-
-    .service-icon {
-      width: 40px;
-      height: 40px;
-      margin-bottom: 24px;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      gap: 4px;
-    }
-
-    .service-icon div {
-      background: var(--green);
-      border-radius: 2px;
-      height: 6px;
-    }
-
-    .service-icon div:nth-child(1) { width: 100%; }
-    .service-icon div:nth-child(2) { width: 75%; background: var(--green-light); }
-    .service-icon div:nth-child(3) { width: 50%; }
-
-    .service-card h3 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 24px;
-      font-weight: 600;
-      color: var(--cream);
-      margin-bottom: 14px;
-    }
-
-    .service-card p {
-      font-size: 14px;
-      font-weight: 300;
-      color: var(--gray);
-      line-height: 1.75;
-    }
-
-    /* ── HOW IT WORKS ── */
-    .how {
-      padding: 100px 60px;
-      background: var(--charcoal-2);
-    }
-
-    .steps {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 48px;
-      margin-top: 60px;
-    }
-
-    .step { position: relative; }
-
-    .step-num {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 64px;
-      font-weight: 700;
-      color: rgba(46,139,87,0.15);
-      line-height: 1;
-      margin-bottom: 16px;
-    }
-
-    .step h3 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 22px;
-      font-weight: 600;
-      color: var(--cream);
-      margin-bottom: 12px;
-    }
-
-    .step p {
-      font-size: 14px;
-      color: var(--gray);
-      line-height: 1.75;
-      font-weight: 300;
-    }
-
-    /* ── WHY ── */
-    .why {
-      padding: 100px 60px;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 80px;
-      align-items: center;
-    }
-
-    .why-content h2 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(36px, 3.5vw, 50px);
-      font-weight: 700;
-      color: var(--cream);
-      line-height: 1.15;
-      margin-bottom: 28px;
-    }
-
-    .why-content h2 em {
-      font-style: normal;
-      color: var(--green-light);
-    }
-
-    .why-content p {
-      font-size: 15px;
-      color: var(--gray);
-      line-height: 1.8;
-      font-weight: 300;
-      margin-bottom: 20px;
-    }
-
-    .why-points { display: flex; flex-direction: column; gap: 20px; }
-
-    .why-point {
-      display: flex;
-      gap: 16px;
-      align-items: flex-start;
-    }
-
-    .why-dot {
-      width: 8px;
-      height: 8px;
-      background: var(--green);
-      border-radius: 50%;
-      margin-top: 7px;
-      flex-shrink: 0;
-    }
-
-    .why-point p {
-      font-size: 15px;
-      color: var(--cream-2);
-      line-height: 1.6;
-      margin: 0;
-      font-weight: 400;
-    }
-
-    .why-visual {
-      background: var(--charcoal-2);
-      padding: 48px;
-      border-left: 4px solid var(--green);
-      position: relative;
-    }
-
-    .why-visual::before {
-      content: '"';
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 120px;
-      color: rgba(46,139,87,0.1);
-      position: absolute;
-      top: -10px;
-      left: 30px;
-      line-height: 1;
-    }
-
-    .why-quote {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 22px;
-      font-weight: 600;
-      color: var(--cream);
-      line-height: 1.5;
-      margin-bottom: 24px;
-      position: relative;
-      z-index: 1;
-    }
-
-    .why-attr {
-      font-size: 13px;
-      color: var(--green-light);
-      letter-spacing: 2px;
-      text-transform: uppercase;
-    }
-
-    /* ── OPT-IN / CONTACT ── */
-    .optin {
-      padding: 100px 60px;
-      background: var(--charcoal-2);
-    }
-
-    .optin-inner {
-      max-width: 680px;
-      margin: 0 auto;
-      text-align: center;
-    }
-
-    .optin-inner h2 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(36px, 4vw, 52px);
-      font-weight: 700;
-      color: var(--cream);
-      margin-bottom: 16px;
-      line-height: 1.15;
-    }
-
-    .optin-inner p {
-      font-size: 15px;
-      color: var(--gray);
-      line-height: 1.7;
-      margin-bottom: 40px;
-      font-weight: 300;
-    }
-
-    .form-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-      margin-bottom: 12px;
-    }
-
-    .form-field {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-      text-align: left;
-    }
-
-    .form-field label {
-      font-size: 11px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: var(--gray);
-      font-weight: 500;
-    }
-
-    .form-field input,
-    .form-field select {
-      background: var(--charcoal-3);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 2px;
-      padding: 14px 16px;
-      font-family: 'DM Sans', sans-serif;
-      font-size: 14px;
-      color: var(--cream);
-      outline: none;
-      transition: border-color 0.2s;
-      width: 100%;
-      -webkit-appearance: none;
-    }
-
-    .form-field input:focus,
-    .form-field select:focus {
-      border-color: var(--green);
-    }
-
-    .form-field select option { background: var(--charcoal-3); }
-
-    .form-full { grid-column: 1 / -1; }
-
-    .form-submit {
-      width: 100%;
-      background: var(--green);
-      color: var(--white);
-      border: none;
-      padding: 18px;
-      font-family: 'DM Sans', sans-serif;
-      font-size: 15px;
-      font-weight: 500;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      cursor: pointer;
-      border-radius: 2px;
-      margin-top: 8px;
-      transition: background 0.2s;
-    }
-
-    .form-submit:hover { background: var(--green-light); }
-
-    .consent {
-      margin-top: 20px;
-      font-size: 12px;
-      color: var(--gray-2);
-      line-height: 1.7;
-      text-align: center;
-    }
-
-    .consent a { color: var(--gray); text-decoration: underline; }
-
-    /* Success message */
-    .success-msg {
-      display: none;
-      background: rgba(46,139,87,0.15);
-      border: 1px solid var(--green);
-      padding: 24px;
-      border-radius: 2px;
-      text-align: center;
-      margin-top: 20px;
-    }
-
-    .success-msg p {
-      color: var(--green-light);
-      font-size: 15px;
-      margin: 0;
-    }
-
-    /* ── FOOTER ── */
-    footer {
-      padding: 48px 60px;
-      border-top: 1px solid rgba(255,255,255,0.06);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: gap;
-      gap: 20px;
-    }
-
-    .footer-brand {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 18px;
-      font-weight: 700;
-      letter-spacing: 2px;
-      color: var(--cream);
-    }
-
-    .footer-brand span { color: var(--green-light); }
-
-    .footer-info {
-      font-size: 13px;
-      color: var(--gray-2);
-      line-height: 1.7;
-      text-align: center;
-    }
-
-    .footer-contact {
-      font-size: 13px;
-      color: var(--gray);
-      text-align: right;
-    }
-
-    .footer-contact a {
-      color: var(--green-light);
-      text-decoration: none;
-    }
-
-    /* ── ANIMATIONS ── */
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(24px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .hero-eyebrow { animation: fadeUp 0.6s ease both; }
-    .hero h1 { animation: fadeUp 0.6s 0.1s ease both; }
-    .hero-sub { animation: fadeUp 0.6s 0.2s ease both; }
-    .hero-actions { animation: fadeUp 0.6s 0.3s ease both; }
-    .hero-trust { animation: fadeUp 0.6s 0.4s ease both; }
-
-    /* ── RESPONSIVE ── */
-    @media (max-width: 900px) {
-      nav { padding: 18px 24px; }
-      .hero { padding: 100px 24px 60px; }
-      .hero-stones { display: none; }
-      .divider { margin: 0 24px; }
-      .services, .how, .optin { padding: 72px 24px; }
-      .why { grid-template-columns: 1fr; padding: 72px 24px; gap: 48px; }
-      .form-row { grid-template-columns: 1fr; }
-      footer { padding: 40px 24px; flex-direction: column; text-align: center; }
-      .footer-contact { text-align: center; }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stackstone — Find the coverage that fits your life</title>
+<meta name="description" content="Three guided assessments for life insurance, Medicare, and long-term care. Answer a few questions and walk away with a clear direction.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@1,6..72,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#141416;
+  --ink-soft:#48484d;
+  --stone:#86868b;
+  --paper:#ffffff;
+  --mist:#f5f5f6;
+  --hairline:#e4e4e7;
+  --bronze:#a47e4e;
+  --bronze-deep:#8a6638;
+  --good:#1f7a55;
+  --radius-lg:28px;
+  --radius-md:18px;
+  --radius-pill:980px;
+  --ease:cubic-bezier(.22,.8,.26,1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Inter',-apple-system,BlinkMacSystemFont,'SF Pro Text','Segoe UI',sans-serif;
+  background:var(--paper);
+  color:var(--ink);
+  -webkit-font-smoothing:antialiased;
+  line-height:1.5;
+}
+::selection{background:rgba(164,126,78,.22)}
+button{font:inherit;cursor:pointer;border:none;background:none;color:inherit}
+:focus-visible{outline:3px solid var(--bronze);outline-offset:3px;border-radius:6px}
+
+/* ---------- Nav ---------- */
+.nav{
+  position:sticky;top:0;z-index:50;
+  backdrop-filter:saturate(180%) blur(20px);
+  -webkit-backdrop-filter:saturate(180%) blur(20px);
+  background:rgba(255,255,255,.78);
+  border-bottom:1px solid rgba(0,0,0,.06);
+}
+.nav-inner{
+  max-width:1040px;margin:0 auto;padding:0 24px;
+  height:56px;display:flex;align-items:center;justify-content:space-between;
+}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink)}
+.brand svg{display:block}
+.brand-name{font-weight:600;font-size:15px;letter-spacing:-.01em}
+.nav-cta{
+  font-size:13px;font-weight:500;
+  background:var(--ink);color:#fff;
+  padding:7px 16px;border-radius:var(--radius-pill);
+  transition:opacity .2s var(--ease), transform .2s var(--ease);
+}
+.nav-cta:hover{opacity:.85;transform:translateY(-1px)}
+
+/* ---------- Hero ---------- */
+.hero{max-width:780px;margin:0 auto;padding:96px 24px 56px;text-align:center}
+.eyebrow{
+  font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--bronze-deep);margin-bottom:18px;
+}
+.hero h1{
+  font-size:clamp(38px,6vw,62px);
+  font-weight:700;letter-spacing:-.035em;line-height:1.05;
+  margin-bottom:22px;
+}
+.hero h1 em{
+  font-family:'Newsreader',Georgia,serif;font-style:italic;font-weight:400;
+  letter-spacing:-.01em;
+}
+.hero p{
+  font-size:clamp(17px,2.2vw,21px);color:var(--ink-soft);
+  max-width:560px;margin:0 auto;line-height:1.55;
+}
+.hero-down{
+  margin-top:40px;display:inline-flex;align-items:center;gap:8px;
+  font-size:15px;font-weight:500;color:var(--bronze-deep);
+  text-decoration:none;
+}
+.hero-down svg{transition:transform .25s var(--ease)}
+.hero-down:hover svg{transform:translateY(3px)}
+
+/* ---------- Segmented control ---------- */
+.assess{max-width:1040px;margin:0 auto;padding:24px 24px 110px}
+.seg-wrap{display:flex;justify-content:center;margin-bottom:44px}
+.seg{
+  display:inline-flex;background:var(--mist);border-radius:var(--radius-pill);
+  padding:4px;gap:2px;position:relative;
+}
+.seg button{
+  position:relative;z-index:1;
+  font-size:14px;font-weight:500;color:var(--ink-soft);
+  padding:9px 22px;border-radius:var(--radius-pill);
+  transition:color .25s var(--ease);
+  white-space:nowrap;
+}
+.seg button[aria-selected="true"]{
+  color:var(--ink);background:#fff;
+  box-shadow:0 1px 4px rgba(0,0,0,.1), 0 4px 14px rgba(0,0,0,.06);
+  font-weight:600;
+}
+
+/* ---------- Quiz stage ---------- */
+.stage{max-width:680px;margin:0 auto;min-height:480px;position:relative}
+.panel{animation:rise .45s var(--ease) both}
+@keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+
+.intro-card{
+  background:var(--mist);border-radius:var(--radius-lg);
+  padding:clamp(36px,5vw,56px);text-align:center;
+}
+.intro-card .pictogram{margin-bottom:22px}
+.intro-card h2{font-size:clamp(26px,4vw,34px);font-weight:700;letter-spacing:-.025em;margin-bottom:12px}
+.intro-card p{color:var(--ink-soft);font-size:16px;max-width:440px;margin:0 auto 8px}
+.intro-meta{font-size:13px;color:var(--stone);margin-bottom:30px}
+.btn-primary{
+  display:inline-block;background:var(--ink);color:#fff;
+  font-size:15px;font-weight:500;padding:13px 32px;
+  border-radius:var(--radius-pill);
+  transition:transform .2s var(--ease),opacity .2s var(--ease);
+}
+.btn-primary:hover{transform:translateY(-1px);opacity:.88}
+.btn-ghost{
+  display:inline-block;color:var(--bronze-deep);font-size:15px;font-weight:500;
+  padding:13px 22px;border-radius:var(--radius-pill);
+  transition:background .2s var(--ease);
+}
+.btn-ghost:hover{background:rgba(164,126,78,.08)}
+
+/* progress */
+.progress{display:flex;align-items:center;gap:14px;margin-bottom:34px}
+.progress-back{
+  width:36px;height:36px;border-radius:50%;flex:none;
+  display:grid;place-items:center;background:var(--mist);
+  transition:background .2s var(--ease);
+}
+.progress-back:hover{background:var(--hairline)}
+.progress-track{flex:1;height:4px;background:var(--mist);border-radius:99px;overflow:hidden}
+.progress-fill{height:100%;background:var(--bronze);border-radius:99px;transition:width .45s var(--ease)}
+.progress-count{font-size:13px;color:var(--stone);font-variant-numeric:tabular-nums;flex:none}
+
+.q-label{
+  font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--bronze-deep);margin-bottom:14px;
+}
+.q-text{font-size:clamp(24px,3.6vw,32px);font-weight:700;letter-spacing:-.025em;line-height:1.15;margin-bottom:8px}
+.q-help{color:var(--stone);font-size:15px;margin-bottom:28px}
+.options{display:grid;gap:12px}
+.opt{
+  text-align:left;background:var(--mist);
+  border:1.5px solid transparent;border-radius:var(--radius-md);
+  padding:18px 22px;font-size:16px;font-weight:500;line-height:1.4;
+  transition:border-color .18s var(--ease),background .18s var(--ease),transform .18s var(--ease);
+  display:flex;align-items:center;gap:14px;
+}
+.opt:hover{border-color:var(--bronze);background:#fff;transform:translateY(-1px)}
+.opt-key{
+  flex:none;width:26px;height:26px;border-radius:8px;
+  background:#fff;border:1px solid var(--hairline);
+  display:grid;place-items:center;
+  font-size:12px;font-weight:600;color:var(--stone);
+}
+.opt:hover .opt-key{border-color:var(--bronze);color:var(--bronze-deep)}
+.opt-sub{display:block;font-size:13.5px;font-weight:400;color:var(--stone);margin-top:3px}
+
+/* ---------- Result ---------- */
+.result-eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--good);margin-bottom:16px;
+}
+.result-eyebrow .dot{width:7px;height:7px;border-radius:50%;background:var(--good)}
+.result h2{font-size:clamp(30px,4.6vw,42px);font-weight:700;letter-spacing:-.03em;line-height:1.08;margin-bottom:14px}
+.result .lede{font-size:17px;color:var(--ink-soft);margin-bottom:30px;max-width:560px}
+.result-grid{display:grid;gap:14px;margin-bottom:30px}
+.why-card{
+  background:var(--mist);border-radius:var(--radius-md);padding:22px 24px;
+}
+.why-card h3{font-size:13px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--stone);margin-bottom:12px}
+.why-card ul{list-style:none;display:grid;gap:10px}
+.why-card li{display:flex;gap:11px;font-size:15px;line-height:1.45}
+.why-card li svg{flex:none;margin-top:3px}
+.consider{border:1px solid var(--hairline);background:#fff}
+.result-cta{
+  background:var(--ink);color:#fff;border-radius:var(--radius-lg);
+  padding:clamp(28px,4vw,40px);
+  display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:18px;
+}
+.result-cta h3{font-size:20px;font-weight:600;letter-spacing:-.02em;margin-bottom:4px}
+.result-cta p{font-size:14px;color:rgba(255,255,255,.65)}
+.result-cta-btns{display:flex;gap:10px;flex-wrap:wrap}
+.btn-light{
+  background:#fff;color:var(--ink);font-size:14px;font-weight:500;
+  padding:11px 24px;border-radius:var(--radius-pill);text-decoration:none;
+  transition:transform .2s var(--ease);display:inline-block;
+}
+.btn-light:hover{transform:translateY(-1px)}
+.btn-outline{
+  border:1px solid rgba(255,255,255,.35);color:#fff;font-size:14px;font-weight:500;
+  padding:11px 24px;border-radius:var(--radius-pill);
+  transition:background .2s var(--ease);
+}
+.btn-outline:hover{background:rgba(255,255,255,.1)}
+.result-note{font-size:12.5px;color:var(--stone);line-height:1.55;margin-top:22px;max-width:600px}
+
+/* ---------- Footer ---------- */
+footer{border-top:1px solid var(--hairline);background:var(--mist)}
+.foot-inner{max-width:1040px;margin:0 auto;padding:48px 24px 56px}
+.foot-brand{display:flex;align-items:center;gap:9px;margin-bottom:18px;font-weight:600;font-size:14px}
+.foot-inner p{font-size:12px;color:var(--stone);line-height:1.65;max-width:760px;margin-bottom:12px}
+.foot-inner .legal-strong{color:var(--ink-soft)}
+
+/* ---------- Learn section ---------- */
+.learn{border-top:1px solid var(--hairline);background:var(--mist)}
+.learn-inner{max-width:1040px;margin:0 auto;padding:90px 24px 100px}
+.learn-head{text-align:center;max-width:560px;margin:0 auto 48px}
+.learn-head h2{font-size:clamp(30px,4.6vw,42px);font-weight:700;letter-spacing:-.03em;margin-bottom:12px}
+.learn-head p{color:var(--ink-soft);font-size:17px}
+.learn-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+.learn-card{
+  text-align:left;background:#fff;border-radius:var(--radius-md);
+  padding:26px 26px 24px;border:1.5px solid transparent;
+  transition:border-color .18s var(--ease),transform .18s var(--ease),box-shadow .18s var(--ease);
+  display:flex;flex-direction:column;gap:8px;
+}
+.learn-card:hover{border-color:var(--bronze);transform:translateY(-2px);box-shadow:0 10px 28px rgba(0,0,0,.07)}
+.learn-tag{font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--bronze-deep)}
+.learn-card h3{font-size:19px;font-weight:600;letter-spacing:-.02em}
+.learn-card p{font-size:14px;color:var(--ink-soft);line-height:1.5}
+.learn-more{margin-top:auto;padding-top:10px;font-size:13.5px;font-weight:500;color:var(--bronze-deep);display:inline-flex;align-items:center;gap:6px}
+
+/* ---------- Modal ---------- */
+.modal-overlay{
+  position:fixed;inset:0;z-index:100;display:none;
+  align-items:center;justify-content:center;padding:20px;
+  background:rgba(20,20,22,.4);
+  backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+}
+.modal-overlay.open{display:flex}
+.modal{
+  background:#fff;border-radius:var(--radius-lg);
+  width:100%;max-width:480px;max-height:85vh;overflow-y:auto;
+  padding:34px 32px 30px;position:relative;
+  animation:pop .35s var(--ease) both;
+  box-shadow:0 30px 80px rgba(0,0,0,.25);
+}
+.modal.wide{max-width:560px}
+@keyframes pop{from{opacity:0;transform:scale(.94) translateY(10px)}to{opacity:1;transform:none}}
+.modal-close{
+  position:absolute;top:18px;right:18px;
+  width:32px;height:32px;border-radius:50%;background:var(--mist);
+  display:grid;place-items:center;
+  transition:background .2s var(--ease);
+}
+.modal-close:hover{background:var(--hairline)}
+.modal h2{font-size:24px;font-weight:700;letter-spacing:-.025em;margin-bottom:6px}
+.modal .modal-sub{font-size:14.5px;color:var(--ink-soft);margin-bottom:24px}
+.contact-opt{
+  display:flex;align-items:center;gap:16px;width:100%;
+  background:var(--mist);border-radius:var(--radius-md);
+  padding:17px 20px;margin-bottom:10px;text-decoration:none;color:var(--ink);
+  border:1.5px solid transparent;text-align:left;
+  transition:border-color .18s var(--ease),background .18s var(--ease),transform .18s var(--ease);
+}
+.contact-opt:hover{border-color:var(--bronze);background:#fff;transform:translateY(-1px)}
+.contact-icon{
+  flex:none;width:42px;height:42px;border-radius:12px;
+  background:#fff;border:1px solid var(--hairline);display:grid;place-items:center;
+}
+.contact-opt:hover .contact-icon{border-color:var(--bronze)}
+.contact-opt strong{display:block;font-size:15.5px;font-weight:600;letter-spacing:-.01em}
+.contact-opt span{display:block;font-size:13px;color:var(--stone);margin-top:1px}
+.modal .learn-tag{margin-bottom:6px;display:block}
+.modal h4{font-size:13px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--stone);margin:22px 0 10px}
+.modal ul{list-style:none;display:grid;gap:9px}
+.modal li{display:flex;gap:10px;font-size:14.5px;line-height:1.5}
+.modal li svg{flex:none;margin-top:4px}
+.modal-foot{font-size:11.5px;color:var(--stone);line-height:1.55;margin-top:22px;padding-top:16px;border-top:1px solid var(--hairline)}
+
+@media (max-width:560px){
+  .seg button{padding:9px 14px;font-size:13px}
+  .opt{padding:16px 16px}
+  .result-cta{flex-direction:column;align-items:flex-start}
+  .modal{padding:28px 22px 24px}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
+  html{scroll-behavior:auto}
+}
+</style>
 </head>
 <body>
 
-<!-- NAV -->
-<nav>
-  <div class="nav-logo">
-    <div class="nav-stones">
-      <span></span><span></span><span></span>
-    </div>
-    <div class="nav-brand">STACKSTONE <span>INSURANCE</span></div>
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="#top" aria-label="Stackstone home">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <ellipse cx="12" cy="19" rx="9" ry="3.4" fill="#141416"/>
+        <ellipse cx="12" cy="13.4" rx="6.6" ry="2.9" fill="#48484d"/>
+        <ellipse cx="12" cy="8.6" rx="4.6" ry="2.4" fill="#a47e4e"/>
+        <ellipse cx="12" cy="4.6" rx="2.7" ry="1.7" fill="#141416"/>
+      </svg>
+      <span class="brand-name">Stackstone</span>
+    </a>
+    <button class="nav-cta" data-open-contact>Talk to an agent</button>
   </div>
-  <a href="#contact" class="nav-cta">FREE CONSULTATION</a>
 </nav>
 
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-stones">
-    <div style="width:280px"></div>
-    <div style="width:240px;background:#3cb371"></div>
-    <div style="width:200px"></div>
-    <div style="width:160px;background:#3cb371"></div>
-  </div>
-  <div class="hero-content">
-    <p class="hero-eyebrow">Clermont, FL &nbsp;·&nbsp; Retirement Specialist</p>
-    <h1>Protect the life<br/>you <em>worked</em><br/>to build.</h1>
-    <p class="hero-sub">Medicare, life insurance, long-term care, and annuity planning — done in one free in-home visit. No pressure. Just clarity on where you stand.</p>
-    <div class="hero-actions">
-      <a href="#contact" class="btn-primary">BOOK FREE REVIEW</a>
-      <a href="#services" class="btn-secondary">See what we cover</a>
-    </div>
-    <div class="hero-trust">
-      <div class="trust-item">
-        <span class="trust-num">Free</span>
-        <span class="trust-label">In-Home Visit</span>
-      </div>
-      <div class="trust-item">
-        <span class="trust-num">126</span>
-        <span class="trust-label">Pages Simplified</span>
-      </div>
-      <div class="trust-item">
-        <span class="trust-num">4</span>
-        <span class="trust-label">Coverage Areas</span>
-      </div>
+<header class="hero" id="top">
+  <div class="eyebrow">Guided Coverage Assessments</div>
+  <h1>The right coverage starts with the <em>right questions.</em></h1>
+  <p>Three short assessments — life insurance, Medicare, and long-term care. A few minutes each. Walk away with a clear direction before you ever talk to anyone.</p>
+  <a class="hero-down" href="#assess">
+    Choose where to start
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M7 2v9M3 7.5 7 11l4-3.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </a>
+</header>
+
+<main class="assess" id="assess">
+  <div class="seg-wrap">
+    <div class="seg" role="tablist" aria-label="Coverage type">
+      <button role="tab" id="tab-life" aria-selected="true" data-quiz="life">Life Insurance</button>
+      <button role="tab" id="tab-medicare" aria-selected="false" data-quiz="medicare">Medicare</button>
+      <button role="tab" id="tab-ltc" aria-selected="false" data-quiz="ltc">Long-Term Care</button>
     </div>
   </div>
-</section>
+  <div class="stage" id="stage" aria-live="polite"></div>
+</main>
 
-<div class="divider"></div>
-
-<!-- SERVICES -->
-<section class="services" id="services">
-  <p class="section-label">What We Cover</p>
-  <h2 class="section-title">Every coverage gap, closed.</h2>
-  <div class="services-grid">
-    <div class="service-card">
-      <div class="service-icon"><div></div><div></div><div></div></div>
-      <h3>Medicare Planning</h3>
-      <p>Turning 65 or already on Medicare? We cut through all 126 pages and find the plan that fits your doctors, your budget, and your life — not just the lowest premium.</p>
+<section class="learn" id="learn">
+  <div class="learn-inner">
+    <div class="learn-head">
+      <h2>Learn the basics first.</h2>
+      <p>Plain-English explanations of every product on this site. No jargon, no pressure — just how each one works and who it's built for.</p>
     </div>
-    <div class="service-card">
-      <div class="service-icon"><div></div><div></div><div></div></div>
-      <h3>Life Insurance</h3>
-      <p>Your employer coverage disappears the day you retire. We lock in a personal policy at the best possible rate before a health event changes everything.</p>
-    </div>
-    <div class="service-card">
-      <div class="service-icon"><div></div><div></div><div></div></div>
-      <h3>Long-Term Care</h3>
-      <p>Medicare pays nothing for nursing homes or in-home care. The average lifetime cost is $274,000. A long-term care plan transfers that risk so your savings stay yours.</p>
-    </div>
-    <div class="service-card">
-      <div class="service-icon"><div></div><div></div><div></div></div>
-      <h3>Annuity Review</h3>
-      <p>Annuity rates are at historic highs. If your policy is more than 3 years old you may be leaving significant guaranteed income on the table. We review it for free.</p>
-    </div>
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- HOW IT WORKS -->
-<section class="how" id="how">
-  <p class="section-label">The Process</p>
-  <h2 class="section-title">One meeting. Complete picture.</h2>
-  <div class="steps">
-    <div class="step">
-      <div class="step-num">01</div>
-      <h3>You Reach Out</h3>
-      <p>Fill out the form below or text directly. We schedule a time that works for you — at your home, on your schedule.</p>
-    </div>
-    <div class="step">
-      <div class="step-num">02</div>
-      <h3>Free In-Home Visit</h3>
-      <p>Bati comes to you. No office, no commute. We review your current coverage, your retirement plan, and your goals in about an hour.</p>
-    </div>
-    <div class="step">
-      <div class="step-num">03</div>
-      <h3>Clear Recommendations</h3>
-      <p>You leave with a plain-English picture of where you stand and exactly what options are available to you. Zero pressure.</p>
-    </div>
-    <div class="step">
-      <div class="step-num">04</div>
-      <h3>You Decide</h3>
-      <p>If something makes sense, we move forward. If not, you walk away with more clarity than you had before. Either way you win.</p>
+    <div class="learn-grid">
+      <button class="learn-card" data-learn="term">
+        <span class="learn-tag">Life Insurance</span>
+        <h3>Term Life</h3>
+        <p>Affordable protection for the years your family depends on your paycheck.</p>
+        <span class="learn-more">How it works →</span>
+      </button>
+      <button class="learn-card" data-learn="whole">
+        <span class="learn-tag">Life Insurance</span>
+        <h3>Whole Life</h3>
+        <p>Coverage that lasts your entire life, with a payment that never goes up.</p>
+        <span class="learn-more">How it works →</span>
+      </button>
+      <button class="learn-card" data-learn="iul">
+        <span class="learn-tag">Life Insurance</span>
+        <h3>Indexed Universal Life</h3>
+        <p>Lifetime protection plus a savings engine tied to the market — with a safety floor.</p>
+        <span class="learn-more">How it works →</span>
+      </button>
+      <button class="learn-card" data-learn="medsupp">
+        <span class="learn-tag">Medicare</span>
+        <h3>Medicare Supplement</h3>
+        <p>Fills the gaps Medicare leaves behind. Any doctor who takes Medicare, anywhere.</p>
+        <span class="learn-more">How it works →</span>
+      </button>
+      <button class="learn-card" data-learn="medadv">
+        <span class="learn-tag">Medicare</span>
+        <h3>Medicare Advantage</h3>
+        <p>An all-in-one private plan, often with a low premium and extra perks.</p>
+        <span class="learn-more">How it works →</span>
+      </button>
+      <button class="learn-card" data-learn="ltc">
+        <span class="learn-tag">Long-Term Care</span>
+        <h3>Long-Term Care Insurance</h3>
+        <p>Covers the everyday care Medicare won't — so your savings and family don't have to.</p>
+        <span class="learn-more">How it works →</span>
+      </button>
     </div>
   </div>
 </section>
 
-<div class="divider"></div>
-
-<!-- WHY -->
-<section class="why" id="why">
-  <div class="why-content">
-    <p class="section-label">Why StackStone</p>
-    <h2>You built this.<br/>Don't let the wrong<br/><em>plan take it.</em></h2>
-    <div class="why-points">
-      <div class="why-point">
-        <div class="why-dot"></div>
-        <p>I come to you — no office visits, no wasted time, no pressure environment.</p>
-      </div>
-      <div class="why-point">
-        <div class="why-dot"></div>
-        <p>I work with multiple carriers so you get the best plan, not the one that pays me the most.</p>
-      </div>
-      <div class="why-point">
-        <div class="why-dot"></div>
-        <p>I specialize in retirement-age coverage — this is all I do, and I know it inside and out.</p>
-      </div>
-      <div class="why-point">
-        <div class="why-dot"></div>
-        <p>Every consultation is completely free. My compensation comes from the carrier, never from you.</p>
-      </div>
-    </div>
+<!-- Contact modal -->
+<div class="modal-overlay" id="contact-overlay" role="dialog" aria-modal="true" aria-labelledby="contact-title">
+  <div class="modal">
+    <button class="modal-close" data-close aria-label="Close">
+      <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 2l9 9M11 2l-9 9" stroke="#48484d" stroke-width="1.8" stroke-linecap="round"/></svg>
+    </button>
+    <h2 id="contact-title">Let's talk it through.</h2>
+    <p class="modal-sub">No obligation, no pressure. Reach out however you're most comfortable.</p>
+    <a class="contact-opt" href="sms:+13529878197">
+      <span class="contact-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 2.5c-4.4 0-8 3-8 6.7 0 2 1 3.8 2.7 5l-.7 3.3 3.5-1.7c.8.2 1.6.3 2.5.3 4.4 0 8-3 8-6.9s-3.6-6.7-8-6.7z" fill="#a47e4e"/></svg></span>
+      <span><strong>Send a text</strong><span>Usually the fastest way to reach me</span></span>
+    </a>
+    <a class="contact-opt" href="tel:+13529878197">
+      <span class="contact-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4.2 2.8c.5-.5 1.3-.5 1.8 0l1.9 1.9c.5.5.5 1.3 0 1.8l-1 1c.9 1.7 2.3 3.1 4 4l1-1c.5-.5 1.3-.5 1.8 0l1.9 1.9c.5.5.5 1.3 0 1.8l-1.1 1.1c-.8.8-2 .9-3 .4-4-2-7.2-5.2-9.1-9.1-.5-1-.3-2.2.4-3l1.4-1.8z" fill="#141416"/></svg></span>
+      <span><strong>Call me</strong><span>If you'd rather just talk</span></span>
+    </a>
+    <a class="contact-opt" href="mailto:stackstonellc.fl@gmail.com?subject=Coverage%20conversation">
+      <span class="contact-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="2" y="4" width="16" height="12" rx="2.5" fill="#86868b"/><path d="m3 5.5 7 5.5 7-5.5" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      <span><strong>Send an email</strong><span>Good for details and documents</span></span>
+    </a>
+    <p class="modal-foot">By calling or texting, you're reaching out to a licensed insurance agent. Standard message and data rates may apply. You're under no obligation to purchase anything.</p>
   </div>
-  <div class="why-visual">
-    <p class="why-quote">Most people spend more time planning their vacation than their retirement coverage. By the time they realize there is a gap, it is too late to fix it at a good rate.</p>
-    <p class="why-attr">Bati Rexha &nbsp;·&nbsp; Retirement Specialist, Clermont FL</p>
-  </div>
-</section>
+</div>
 
-<div class="divider"></div>
+<!-- Learn modal -->
+<div class="modal-overlay" id="learn-overlay" role="dialog" aria-modal="true">
+  <div class="modal wide" id="learn-modal"></div>
+</div>
 
-<!-- OPT-IN FORM -->
-<section class="optin" id="contact">
-  <div class="optin-inner">
-    <p class="section-label">Get Started</p>
-    <h2>Book Your Free<br/>Coverage Review</h2>
-    <p>Fill out the form and Bati will reach out within 24 hours to schedule your free in-home visit. You may also receive a follow-up text message from our team.</p>
-
-    <form id="contactForm" onsubmit="handleSubmit(event)">
-      <div class="form-row">
-        <div class="form-field">
-          <label>First Name</label>
-          <input type="text" name="firstName" placeholder="John" required/>
-        </div>
-        <div class="form-field">
-          <label>Last Name</label>
-          <input type="text" name="lastName" placeholder="Smith" required/>
-        </div>
-      </div>
-      <div class="form-row">
-        <div class="form-field">
-          <label>Phone Number</label>
-          <input type="tel" name="phone" placeholder="(352) 555-0100" required/>
-        </div>
-        <div class="form-field">
-          <label>Age Range</label>
-          <select name="age" required>
-            <option value="" disabled selected>Select your age</option>
-            <option value="59-64">59 to 64</option>
-            <option value="65">Turning 65</option>
-            <option value="65-74">65 to 74</option>
-            <option value="75+">75 or older</option>
-          </select>
-        </div>
-      </div>
-      <div class="form-row">
-        <div class="form-field form-full">
-          <label>What can we help you with?</label>
-          <select name="interest" required>
-            <option value="" disabled selected>Select a topic</option>
-            <option value="medicare">Medicare Planning</option>
-            <option value="life">Life Insurance</option>
-            <option value="ltc">Long-Term Care</option>
-            <option value="annuity">Annuity Review</option>
-            <option value="all">Full Retirement Review</option>
-          </select>
-        </div>
-      </div>
-      <button type="submit" class="form-submit">REQUEST FREE CONSULTATION</button>
-    </form>
-
-    <div class="success-msg" id="successMsg">
-      <p>Thank you! Bati will reach out within 24 hours to schedule your free in-home visit.</p>
-    </div>
-
-    <p class="consent">By submitting this form, you agree to be contacted by StackStone Insurance Solutions via phone and/or text message at the number provided. Message and data rates may apply. Message frequency varies. You may opt out at any time by replying STOP. This is not a commitment to purchase any product or service. See our <a href="#privacy">privacy policy</a> below.</p>
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- PRIVACY POLICY (required for TCR) -->
-<section id="privacy" style="padding: 60px 60px; max-width: 800px; margin: 0 auto;">
-  <p class="section-label">Privacy Policy</p>
-  <p style="font-size:13px; color:var(--gray-2); line-height:1.8; margin-bottom:16px;">
-    <strong style="color:var(--gray);">Last updated: 2026</strong>
-  </p>
-  <p style="font-size:13px; color:var(--gray-2); line-height:1.8; margin-bottom:12px;">
-    StackStone Insurance Solutions ("we", "us", or "our") collects your name, phone number, and coverage interests when you submit the form above. This information is used solely to contact you about insurance and retirement planning services.
-  </p>
-  <p style="font-size:13px; color:var(--gray-2); line-height:1.8; margin-bottom:12px;">
-    <strong style="color:var(--gray);">SMS Communications:</strong> By submitting the contact form, you expressly consent to receive text messages from StackStone Insurance Solutions at the phone number you provided. Message frequency will vary. Message and data rates may apply. To opt out, reply STOP to any message. To get help, reply HELP.
-  </p>
-  <p style="font-size:13px; color:var(--gray-2); line-height:1.8; margin-bottom:12px;">
-    We do not sell, share, or distribute your personal information to third parties. Your information is kept confidential and used only for the purpose of scheduling and conducting your free insurance consultation.
-  </p>
-  <p style="font-size:13px; color:var(--gray-2); line-height:1.8;">
-    For questions, contact us at stackstonellc@gmail.com or (352) 718-2629.
-  </p>
-</section>
-
-<!-- FOOTER -->
 <footer>
-  <div class="footer-brand">STACKSTONE <span>INSURANCE</span></div>
-  <div class="footer-info">
-    &copy; 2026 StackStone Insurance Solutions &nbsp;·&nbsp; Clermont, FL<br/>
-    Licensed Insurance Agent &nbsp;·&nbsp; All consultations are free and no-obligation
-  </div>
-  <div class="footer-contact">
-    <a href="tel:3527182629">(352) 718-2629</a><br/>
-    <a href="mailto:stackstonellc@gmail.com">stackstonellc@gmail.com</a>
+  <div class="foot-inner">
+    <div class="foot-brand">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <ellipse cx="12" cy="19" rx="9" ry="3.4" fill="#86868b"/>
+        <ellipse cx="12" cy="13.4" rx="6.6" ry="2.9" fill="#a8a8ad"/>
+        <ellipse cx="12" cy="8.6" rx="4.6" ry="2.4" fill="#a47e4e"/>
+        <ellipse cx="12" cy="4.6" rx="2.7" ry="1.7" fill="#86868b"/>
+      </svg>
+      Stackstone
+    </div>
+    <p class="legal-strong">These assessments are educational tools only. Results are general directions based on your answers — not insurance advice, a recommendation to buy or replace any policy, an offer of coverage, or a guarantee of eligibility, rates, or benefits. Product availability, features, and pricing vary by carrier, state, age, and underwriting.</p>
+    <p>Stackstone is not connected with or endorsed by the United States government or the federal Medicare program. We do not offer every plan available in your area. Please contact Medicare.gov or 1‑800‑MEDICARE to get information on all of your options.</p>
+    <p>Before purchasing or replacing any insurance policy, speak with a licensed insurance agent about your complete financial picture. Replacing existing coverage may have consequences and requires careful comparison.</p>
+    <p>Bahtjar Rexha, Licensed Insurance Agent · Florida License #YOUR_LICENSE_NUMBER · stackstonellc.fl@gmail.com · (352) 987-8197</p>
+    <p>© 2026 Stackstone. All rights reserved.</p>
   </div>
 </footer>
 
 <script>
-  function handleSubmit(e) {
-    e.preventDefault();
-    document.getElementById('contactForm').style.display = 'none';
-    document.getElementById('successMsg').style.display = 'block';
-  }
-</script>
+/* ============ Quiz data ============ */
+const CONTACT_EMAIL = "stackstonellc.fl@gmail.com"; // <-- replace
+const ICON_CHECK = '<svg width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M2.5 8l3.2 3.2L12.5 4" stroke="#1f7a55" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+const ICON_DOT = '<svg width="15" height="15" viewBox="0 0 15 15" fill="none"><circle cx="7.5" cy="8" r="3" fill="#a47e4e"/></svg>';
 
+const QUIZZES = {
+
+/* ---------- LIFE ---------- */
+life: {
+  title: "Which kind of life insurance fits you?",
+  intro: "Term, whole, or indexed universal — each is built for a different job. Five questions point you toward the structure that matches what you actually want the policy to do.",
+  meta: "5 questions · about 2 minutes",
+  pictogram: '<svg width="56" height="56" viewBox="0 0 56 56" fill="none"><rect x="8" y="14" width="40" height="30" rx="9" fill="#fff"/><path d="M28 22c-3.6-3.8-9.6-1.8-9.6 3 0 4.4 6.4 8.6 9.6 10.6 3.2-2 9.6-6.2 9.6-10.6 0-4.8-6-6.8-9.6-3z" fill="#a47e4e"/></svg>',
+  scoreKeys: ["term","whole","iul"],
+  questions: [
+    {
+      label:"Purpose", q:"What do you want this policy to do?",
+      opts:[
+        {t:"Replace my income while my family depends on it", s:{term:2}, r:{term:"You want protection during the years your family relies on your income — exactly what term is built for."}},
+        {t:"Leave money to my family no matter when I pass", s:{whole:2,iul:1}, r:{whole:"You want a benefit that's there whenever you pass, not just during a set window."}},
+        {t:"Build cash value I can access while I'm alive", s:{iul:2,whole:1}, r:{iul:"Living access to cash value is a core feature of indexed universal life."}},
+        {t:"Cover final expenses so no one else has to", s:{whole:2}, r:{whole:"Permanent coverage sized for final expenses is the classic whole life use case."}}
+      ]
+    },
+    {
+      label:"Time horizon", q:"How long do you need the coverage?",
+      opts:[
+        {t:"A set window — until the mortgage is paid or the kids are grown", s:{term:2}, r:{term:"Your need has an end date, so paying for lifetime coverage may be paying for more than the job requires."}},
+        {t:"My whole life, with a premium that never changes", s:{whole:2}, r:{whole:"You want lifetime certainty with a locked-in premium."}},
+        {t:"Lifetime, but I want flexibility to adjust along the way", s:{iul:2}, r:{iul:"Flexible premiums and adjustable benefits are what universal life structures are for."}}
+      ]
+    },
+    {
+      label:"Budget", q:"How do you think about the premium?",
+      opts:[
+        {t:"Maximum coverage for the lowest monthly cost", s:{term:2}, r:{term:"Dollar for dollar, term buys the most coverage of any structure."}},
+        {t:"A fixed amount I'll commit to for the long haul", s:{whole:2}, r:{whole:"A guaranteed level premium fits how you want to budget."}},
+        {t:"Room to fund something that builds value over time", s:{iul:2,whole:1}, r:{iul:"You have budget beyond pure protection, which is what makes cash-value designs work."}}
+      ]
+    },
+    {
+      label:"Cash value", q:"How important is growth inside the policy?",
+      opts:[
+        {t:"Not important — I just want the protection", s:{term:2}, r:{term:"You want insurance, not an investment vehicle — keep it simple and inexpensive."}},
+        {t:"I want steady, guaranteed growth", s:{whole:2}, r:{whole:"Whole life's cash value grows on a guaranteed schedule, plus potential dividends with participating carriers."}},
+        {t:"I want growth potential tied to a market index, with a floor against losses", s:{iul:2}, r:{iul:"Index-linked crediting with a 0% floor is the defining feature of IUL."}}
+      ]
+    },
+    {
+      label:"Stage of life", q:"Which range are you in?",
+      opts:[
+        {t:"Under 35", s:{term:1,iul:1}},
+        {t:"35–50", s:{term:1,iul:1}},
+        {t:"51–65", s:{whole:1}},
+        {t:"65 or older", s:{whole:2}}
+      ]
+    }
+  ],
+  results: {
+    term: {
+      h:"Term life looks like your strongest starting point.",
+      lede:"Pure protection for a defined window — 10, 20, or 30 years — at the lowest cost per dollar of coverage. When the need ends, so does the premium.",
+      consider:[
+        "Coverage ends when the term ends — if a permanent need emerges later, conversion options matter, so ask about them up front.",
+        "Premiums rise sharply if you re-apply at an older age, so size the term length honestly the first time.",
+        "No cash value — this is protection only, by design."
+      ]
+    },
+    whole: {
+      h:"Whole life looks like your strongest starting point.",
+      lede:"Permanent coverage with a level premium, a guaranteed death benefit, and cash value that grows on a fixed schedule. The most predictable policy you can own.",
+      consider:[
+        "Premiums are meaningfully higher than term for the same death benefit — the certainty is what you're paying for.",
+        "Cash value builds slowly in early years; this is a long-term commitment, not a short-term product.",
+        "Make sure the premium fits comfortably so the policy never lapses under pressure."
+      ]
+    },
+    iul: {
+      h:"Indexed universal life is worth a serious look.",
+      lede:"Permanent, flexible coverage where cash value growth is linked to a market index — with a floor that protects against index losses. Built for people who want protection and a tax-advantaged accumulation engine in one.",
+      consider:[
+        "Caps, participation rates, and policy charges shape real-world returns — illustrations are projections, not promises.",
+        "Flexibility cuts both ways: underfunding an IUL can cause problems years later, so it needs to be funded with intention.",
+        "More moving parts than term or whole life — this product deserves a careful, unhurried walkthrough."
+      ]
+    }
+  }
+},
+
+/* ---------- MEDICARE (two-phase) ---------- */
+medicare: {
+  title: "Medicare Advantage or a Supplement?",
+  intro: "First we'll find which path fits how you actually use healthcare. If a Medicare Supplement is your direction, a few more questions narrow it to Plan G or Plan N.",
+  meta: "5–8 questions · about 3 minutes",
+  pictogram: '<svg width="56" height="56" viewBox="0 0 56 56" fill="none"><rect x="8" y="14" width="40" height="30" rx="9" fill="#fff"/><rect x="24.5" y="20" width="7" height="18" rx="2.5" fill="#a47e4e"/><rect x="19" y="25.5" width="18" height="7" rx="2.5" fill="#a47e4e"/></svg>',
+  scoreKeys: ["ma","supp"],
+  questions: [
+    {
+      label:"Doctors", q:"How do you feel about provider networks?",
+      opts:[
+        {t:"I want to see any doctor in the country who accepts Medicare", sub:"No networks, no referrals", s:{supp:2}, r:{supp:"Nationwide access to any Medicare-accepting provider, with no referrals, is the core advantage of Original Medicare with a Supplement."}},
+        {t:"I'm fine choosing from a network if it keeps my costs down", s:{ma:2}, r:{ma:"You're comfortable with network-based care, which is the trade Medicare Advantage makes for its lower premiums."}}
+      ]
+    },
+    {
+      label:"Lifestyle", q:"Do you travel or split time between states?",
+      opts:[
+        {t:"Yes — I travel often or live part of the year elsewhere", s:{supp:2}, r:{supp:"Your coverage travels with you anywhere in the U.S. — important for snowbirds and frequent travelers."}},
+        {t:"No — I stay close to home most of the year", s:{ma:1}}
+      ]
+    },
+    {
+      label:"Costs", q:"Which would you rather have?",
+      opts:[
+        {t:"A predictable monthly premium with very few surprises at the doctor", s:{supp:2}, r:{supp:"You'd rather pay a known premium each month than face variable copays and coinsurance when you need care."}},
+        {t:"A low or $0 monthly premium — I'll pay copays as I go", s:{ma:2}, r:{ma:"You prefer keeping monthly costs minimal and paying at the point of care instead."}}
+      ]
+    },
+    {
+      label:"Usage", q:"How often do you use healthcare today?",
+      opts:[
+        {t:"Regularly — specialists, ongoing conditions, or frequent visits", s:{supp:2}, r:{supp:"Heavier healthcare use tends to favor the predictable, comprehensive coverage of a Supplement."}},
+        {t:"Rarely — mostly checkups and the occasional visit", s:{ma:1}}
+      ]
+    },
+    {
+      label:"Extras", q:"How much do built-in extras matter to you?",
+      opts:[
+        {t:"A lot — dental, vision, hearing, or gym benefits would get real use", s:{ma:2}, r:{ma:"Bundled extras like dental, vision, and fitness benefits are a genuine strength of many Advantage plans."}},
+        {t:"Not much — I care more about flexibility in my medical coverage", s:{supp:1}}
+      ]
+    }
+  ],
+  /* phase 2 — only runs if supp wins */
+  phase2: {
+    keys:["g","n"],
+    questions:[
+      {
+        label:"Plan G or Plan N", q:"How many doctor visits do you have in a typical year?",
+        opts:[
+          {t:"Six or fewer", s:{n:2}, r:{n:"With fewer visits, Plan N's small office copays rarely add up to its premium savings over Plan G."}},
+          {t:"Seven or more", s:{g:2}, r:{g:"Frequent visits mean per-visit copays add up — Plan G removes them entirely."}}
+        ]
+      },
+      {
+        label:"Plan G or Plan N", q:"Would small copays bother you?",
+        opts:[
+          {t:"No — up to $20 at the office or $50 at the ER is fine for a lower premium", s:{n:2}, r:{n:"You're comfortable trading small, capped copays for a meaningfully lower monthly premium."}},
+          {t:"Yes — I'd rather pay almost nothing when I actually receive care", s:{g:2}, r:{g:"You want point-of-care costs near zero, which is exactly what Plan G delivers after the Part B deductible."}}
+        ]
+      },
+      {
+        label:"Plan G or Plan N", q:"What's the bigger priority?",
+        opts:[
+          {t:"The lowest monthly premium I can get with strong coverage", s:{n:2}, r:{n:"Premium efficiency is your priority, and that's Plan N's entire reason to exist."}},
+          {t:"The most complete coverage available to new enrollees", s:{g:2}, r:{g:"Plan G is the most comprehensive plan available to anyone who became Medicare-eligible in 2020 or later."}}
+        ]
+      }
+    ]
+  },
+  results: {
+    ma: {
+      h:"A Medicare Advantage plan may fit how you use care.",
+      lede:"Advantage plans bundle your hospital, medical, and usually drug coverage into one plan — often with a low or $0 premium and extras like dental and vision — in exchange for using a network.",
+      consider:[
+        "Networks and prior authorizations are the trade-off: your doctors and hospitals need to be in-plan, and some services require approval first.",
+        "Plans, networks, and benefits change every year and vary by county — what's available to your neighbor may not be available to you.",
+        "If you later want to switch to Original Medicare with a Supplement, you may face health underwriting — the door is widest open when you first enroll."
+      ]
+    },
+    supp_g: {
+      h:"Original Medicare with Plan G points your direction.",
+      lede:"Plan G is the most comprehensive Supplement available to new enrollees. After the annual Part B deductible, it covers essentially everything Original Medicare approves — any doctor, anywhere in the country, no networks or referrals.",
+      consider:[
+        "You'll pay the annual Part B deductible out of pocket before Plan G's coverage begins — after that, covered costs drop to essentially zero.",
+        "You'll want a separate Part D drug plan alongside it; Supplements don't include prescriptions.",
+        "Premiums differ by carrier for identical benefits — and how a carrier raises rates over time matters more than today's price."
+      ]
+    },
+    supp_n: {
+      h:"Original Medicare with Plan N points your direction.",
+      lede:"Plan N keeps the freedom of a Supplement — any Medicare-accepting doctor, no networks — at a lower premium than Plan G, in exchange for small copays: up to $20 at the office and up to $50 at the ER (waived if you're admitted).",
+      consider:[
+        "Florida bonus: state law prohibits Part B excess charges, which removes Plan N's main drawback in most other states.",
+        "You'll pay the annual Part B deductible plus those per-visit copays — if your visit count climbs over time, re-run the math against Plan G.",
+        "You'll want a separate Part D drug plan alongside it; Supplements don't include prescriptions."
+      ]
+    }
+  }
+},
+
+/* ---------- LTC ---------- */
+ltc: {
+  title: "Should long-term care be on your radar?",
+  intro: "Most people over 65 will need some form of long-term care — and neither Medicare nor health insurance covers the everyday, custodial kind. Five questions show whether planning for it deserves your attention now.",
+  meta: "5 questions · about 2 minutes",
+  pictogram: '<svg width="56" height="56" viewBox="0 0 56 56" fill="none"><rect x="8" y="14" width="40" height="30" rx="9" fill="#fff"/><path d="M18 36V27l10-7 10 7v9" stroke="#a47e4e" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>',
+  scoreKeys: ["score"],
+  tiered: true,
+  questions: [
+    {
+      label:"Stage of life", q:"Which range are you in?",
+      opts:[
+        {t:"Under 50", s:{score:1}, r:{high:"Planning early locks in the lowest pricing you'll ever see — premiums only climb with age."}},
+        {t:"50–59", s:{score:2}, r:{high:"Your 50s are the sweet spot: health still qualifies easily and pricing is still reasonable."}},
+        {t:"60–69", s:{score:2}, r:{high:"You're in the window where most LTC planning happens — and where waiting starts to cost real money."}},
+        {t:"70 or older", s:{score:1}, r:{high:"Options narrow with age, but they exist — some designs use simplified underwriting."}}
+      ]
+    },
+    {
+      label:"Experience", q:"Have you ever helped care for an aging parent or relative?",
+      opts:[
+        {t:"Yes — I saw what it takes, up close", s:{score:1}, r:{high:"You've seen the real cost — financial and human — which is why this question exists."}},
+        {t:"No, not yet", s:{score:0}}
+      ]
+    },
+    {
+      label:"The number", q:"Quality care in Florida can run $9,000–$11,000 a month. If you needed it, where would the money come from?",
+      opts:[
+        {t:"Honestly, it would drain my savings fast", s:{score:3}, r:{high:"A care event would directly threaten your savings — this is precisely the risk LTC coverage exists to absorb."}},
+        {t:"I could cover a few years, but it would cut into my retirement or what I leave behind", s:{score:2}, r:{high:"You could absorb a short event, but a long one would consume assets you've earmarked for retirement or family."}},
+        {t:"I could comfortably self-insure for as long as it takes", s:{score:0}, r:{low:"You have the assets to self-insure — though some people in your position still use coverage to turn each dollar of premium into several dollars of care benefit."}}
+      ]
+    },
+    {
+      label:"Family", q:"If you needed daily help, who would it fall on?",
+      opts:[
+        {t:"My spouse or my kids", s:{score:2}, r:{high:"Coverage isn't just about money — it's about keeping your spouse or kids from becoming full-time caregivers."}},
+        {t:"I have a professional plan and the means to fund it", s:{score:0}},
+        {t:"I honestly don't know", s:{score:1}, r:{high:"Not knowing who would carry the load is itself the signal that a plan is worth building."}}
+      ]
+    },
+    {
+      label:"Assets", q:"Roughly how much in savings and assets would you want to protect?",
+      opts:[
+        {t:"Under $100,000", s:{score:0}, r:{low:"With more limited assets, Medicaid may end up funding care — premium dollars may serve you better elsewhere, but it's worth confirming with an agent."}},
+        {t:"$100,000 – $1 million", s:{score:2}, r:{high:"This is the range where LTC coverage matters most — enough to lose, not enough to comfortably self-insure."}},
+        {t:"Over $1 million", s:{score:1}, r:{high:"Even with significant assets, hybrid designs can protect your legacy with strong leverage — often 1–3% of the assets being protected."}}
+      ]
+    }
+  ],
+  results: {
+    high: {
+      h:"Long-term care planning deserves a place on your list.",
+      lede:"Based on your answers, a care event would put real pressure on your savings, your family, or both. Modern coverage isn't the use-it-or-lose-it product of decades past — hybrid designs return value to your family even if you never need care.",
+      consider:[
+        "Hybrid life + LTC policies pay for care if you need it — and pay your family a death benefit if you don't. No wasted premium.",
+        "Florida's Long-Term Care Partnership program lets qualifying policies shield assets dollar-for-dollar if Medicaid ever enters the picture.",
+        "Health is the gatekeeper: you buy this coverage with your health and pay with your money. Waiting risks the first one."
+      ]
+    },
+    mid: {
+      h:"Long-term care is worth a real conversation.",
+      lede:"You're not in the highest-urgency category, but your answers show exposure — a long care event would touch assets or people you'd rather protect. The good news: you likely have flexible options.",
+      consider:[
+        "Hybrid life + LTC and annuity-based designs let you plan without the use-it-or-lose-it risk of traditional policies.",
+        "Pricing is driven by your age and health on the day you apply — the math only gets worse by waiting.",
+        "A short conversation can size the actual gap between what care costs in Florida and what your plan covers today."
+      ]
+    },
+    low: {
+      h:"This may not be your most urgent priority — and that's okay.",
+      lede:"Based on your answers, a care event wouldn't immediately destabilize your finances, or coverage may not be the most efficient use of your dollars right now. That's a legitimate answer.",
+      consider:[
+        "Circumstances change — revisit this in your 50s or after any major change in assets, health, or family.",
+        "If you're self-insuring by choice, it's worth stress-testing the math against Florida care costs of $120,000+ per year.",
+        "If assets are limited, understanding how Medicaid handles long-term care in Florida is the more useful homework."
+      ]
+    }
+  },
+  tiers:(score)=> score>=7 ? "high" : score>=4 ? "mid" : "low"
+}
+};
+
+/* ============ Engine ============ */
+const stage = document.getElementById('stage');
+const tabs = document.querySelectorAll('.seg button');
+let state = null;
+
+function startState(quizId){
+  return { quizId, phase:1, idx:0, scores:{}, reasons:[], history:[] };
+}
+
+function renderIntro(quizId){
+  const q = QUIZZES[quizId];
+  stage.innerHTML = `
+    <div class="panel intro-card">
+      <div class="pictogram">${q.pictogram}</div>
+      <h2>${q.title}</h2>
+      <p>${q.intro}</p>
+      <div class="intro-meta">${q.meta}</div>
+      <button class="btn-primary" id="start-btn">Start the assessment</button>
+    </div>`;
+  document.getElementById('start-btn').onclick = ()=>{
+    state = startState(quizId);
+    renderQuestion();
+  };
+}
+
+function activeQuestions(){
+  const q = QUIZZES[state.quizId];
+  return state.phase===1 ? q.questions : q.phase2.questions;
+}
+function totalSteps(){
+  const q = QUIZZES[state.quizId];
+  let t = q.questions.length;
+  if(state.phase===2) t = q.phase2.questions.length;
+  return t;
+}
+
+function renderQuestion(){
+  const qs = activeQuestions();
+  const item = qs[state.idx];
+  const total = totalSteps();
+  const pct = (state.idx/total)*100;
+  const letters = ['A','B','C','D','E'];
+  stage.innerHTML = `
+    <div class="panel">
+      <div class="progress">
+        <button class="progress-back" id="back-btn" aria-label="Go back">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M9 2 4 7l5 5" stroke="#48484d" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="progress-track"><div class="progress-fill" style="width:${pct}%"></div></div>
+        <div class="progress-count">${state.idx+1} of ${total}${state.phase===2?' · part two':''}</div>
+      </div>
+      <div class="q-label">${item.label}</div>
+      <h2 class="q-text">${item.q}</h2>
+      ${item.help?`<p class="q-help">${item.help}</p>`:'<div style="height:20px"></div>'}
+      <div class="options">
+        ${item.opts.map((o,i)=>`
+          <button class="opt" data-i="${i}">
+            <span class="opt-key">${letters[i]}</span>
+            <span>${o.t}${o.sub?`<span class="opt-sub">${o.sub}</span>`:''}</span>
+          </button>`).join('')}
+      </div>
+    </div>`;
+
+  document.getElementById('back-btn').onclick = goBack;
+  stage.querySelectorAll('.opt').forEach(btn=>{
+    btn.onclick = ()=> choose(parseInt(btn.dataset.i,10));
+  });
+}
+
+function choose(i){
+  const item = activeQuestions()[state.idx];
+  const opt = item.opts[i];
+  state.history.push({phase:state.phase, idx:state.idx, opt});
+  for(const k in (opt.s||{})) state.scores[k]=(state.scores[k]||0)+opt.s[k];
+  if(opt.r) state.reasons.push(opt.r);
+  state.idx++;
+  if(state.idx >= activeQuestions().length) finishPhase();
+  else renderQuestion();
+}
+
+function goBack(){
+  if(state.history.length===0){ renderIntro(state.quizId); state=null; return; }
+  const last = state.history.pop();
+  for(const k in (last.opt.s||{})) state.scores[k]-=last.opt.s[k];
+  if(last.opt.r) state.reasons.pop();
+  state.phase = last.phase;
+  state.idx = last.idx;
+  renderQuestion();
+}
+
+function finishPhase(){
+  const quiz = QUIZZES[state.quizId];
+
+  if(state.quizId==='medicare' && state.phase===1){
+    const ma = state.scores.ma||0, supp = state.scores.supp||0;
+    if(supp >= ma){
+      state.phase = 2; state.idx = 0;
+      renderQuestion();
+      return;
+    }
+    return renderResult('ma');
+  }
+  if(state.quizId==='medicare' && state.phase===2){
+    const g = state.scores.g||0, n = state.scores.n||0;
+    return renderResult(g>=n ? 'supp_g' : 'supp_n');
+  }
+  if(quiz.tiered){
+    return renderResult(quiz.tiers(state.scores.score||0));
+  }
+  // generic max-score winner
+  let winner=null, best=-1;
+  quiz.scoreKeys.forEach(k=>{ if((state.scores[k]||0)>best){best=state.scores[k]||0;winner=k;} });
+  renderResult(winner);
+}
+
+function reasonsFor(key){
+  // collect personalized reasons matching the winning key (or tier)
+  const out=[];
+  state.reasons.forEach(r=>{ if(r[key]) out.push(r[key]); });
+  // medicare phase-2 winners should also surface phase-1 'supp' reasons
+  if(key==='supp_g'||key==='supp_n'){
+    state.reasons.forEach(r=>{ if(r.supp) out.unshift(r.supp); });
+    const sub = key==='supp_g'?'g':'n';
+    // already captured via r[key]? phase2 reasons use g/n keys:
+    state.reasons.forEach(r=>{ if(r[sub]) out.push(r[sub]); });
+  }
+  if(key==='mid'){ state.reasons.forEach(r=>{ if(r.high) out.push(r.high); }); }
+  return [...new Set(out)].slice(0,4);
+}
+
+function renderResult(key){
+  const quiz = QUIZZES[state.quizId];
+  const res = quiz.results[key];
+  const why = reasonsFor(key);
+  stage.innerHTML = `
+    <div class="panel result">
+      <div class="result-eyebrow"><span class="dot"></span>Your direction</div>
+      <h2>${res.h}</h2>
+      <p class="lede">${res.lede}</p>
+      <div class="result-grid">
+        ${why.length?`
+        <div class="why-card">
+          <h3>Why this fits your answers</h3>
+          <ul>${why.map(w=>`<li>${ICON_CHECK}<span>${w}</span></li>`).join('')}</ul>
+        </div>`:''}
+        <div class="why-card consider">
+          <h3>Worth knowing before you decide</h3>
+          <ul>${res.consider.map(c=>`<li>${ICON_DOT}<span>${c}</span></li>`).join('')}</ul>
+        </div>
+      </div>
+      <div class="result-cta">
+        <div>
+          <h3>Turn this direction into a plan.</h3>
+          <p>A short, no-obligation conversation with a licensed agent.</p>
+        </div>
+        <div class="result-cta-btns">
+          <button class="btn-light" data-open-contact>Schedule a conversation</button>
+          <button class="btn-outline" id="retake-btn">Retake</button>
+        </div>
+      </div>
+      <p class="result-note">This result is an educational starting point based only on your answers — not insurance advice, a recommendation to buy or replace coverage, or an offer of any product. Plan availability, pricing, and eligibility depend on your state, age, health, and carrier underwriting. A licensed agent can review your complete situation.</p>
+    </div>`;
+  document.getElementById('retake-btn').onclick = ()=> renderIntro(state.quizId);
+  stage.scrollIntoView({behavior:'smooth', block:'start'});
+}
+
+/* ---------- tabs ---------- */
+tabs.forEach(tab=>{
+  tab.addEventListener('click', ()=>{
+    tabs.forEach(t=>t.setAttribute('aria-selected','false'));
+    tab.setAttribute('aria-selected','true');
+    state = null;
+    renderIntro(tab.dataset.quiz);
+  });
+});
+
+/* ============ Learn content ============ */
+const LEARN = {
+  term:{tag:"Life Insurance",title:"Term Life",
+    how:[
+      "You pick a coverage amount (say, $500,000) and a length of time — usually 10, 20, or 30 years.",
+      "You pay a fixed monthly premium for that whole term. It never goes up.",
+      "If you pass away during the term, your family receives the full amount, tax-free. They can use it for anything — the mortgage, bills, college, daily life.",
+      "If you outlive the term, the coverage simply ends. Think of it like renting protection for the years you need it most."
+    ],
+    why:[
+      "It's the most affordable way to get a large amount of coverage — often the cost of a few streaming subscriptions.",
+      "It protects the exact years your family depends on your income: while the kids are home, while the mortgage exists.",
+      "Many term policies can be converted to permanent coverage later, without a new health exam — worth asking about."
+    ]},
+  whole:{tag:"Life Insurance",title:"Whole Life",
+    how:[
+      "Coverage that lasts your entire life — there's no expiration date. As long as premiums are paid, the payout to your family is guaranteed.",
+      "Your premium is locked in on day one and never increases, even as you age.",
+      "Part of every payment builds 'cash value' — a savings component inside the policy that grows on a guaranteed schedule and that you can borrow against if life happens.",
+      "When you pass — whether that's at 70 or 100 — your family receives the death benefit, tax-free."
+    ],
+    why:[
+      "Some needs never expire: final expenses, leaving something behind, taking care of a spouse. Whole life matches a permanent need with permanent coverage.",
+      "It's the most predictable policy you can own — no guessing, no surprises, no market risk.",
+      "The cash value acts like a quiet savings account you can't forget to fund."
+    ]},
+  iul:{tag:"Life Insurance",title:"Indexed Universal Life",
+    how:[
+      "Like whole life, it covers you for your entire life and builds cash value — but the growth works differently.",
+      "Your cash value's growth is linked to a stock market index (like the S&P 500). When the index goes up, your cash value is credited growth, up to a cap.",
+      "When the index goes down, you don't lose — there's a floor, typically 0%. Your cash value doesn't shrink from market losses.",
+      "Premiums are flexible: you can pay more in good years to build value faster, or less when money is tight."
+    ],
+    why:[
+      "It's protection and a tax-advantaged savings engine in one — money inside grows tax-deferred and can often be accessed tax-free through policy loans.",
+      "The floor means you participate in market upside without riding market crashes down.",
+      "It has more moving parts than term or whole life — caps, fees, and funding levels matter — so it's a product worth walking through with someone licensed, not buying off a website."
+    ]},
+  medsupp:{tag:"Medicare",title:"Medicare Supplement (Medigap)",
+    how:[
+      "Original Medicare covers about 80% of your medical costs — a Supplement is a private policy that picks up most or all of the rest.",
+      "You keep Original Medicare as your main coverage. The Supplement just pays the gaps: deductibles, copays, coinsurance.",
+      "There are no networks. You can see any doctor or hospital in the country that accepts Medicare — no referrals needed.",
+      "Plans are standardized by letter. Every Plan G is identical in benefits no matter the company — only the price and the company differ. Plan G is the most complete option for new enrollees; Plan N trades small copays for a lower premium."
+    ],
+    why:[
+      "Predictability. You pay a known monthly premium, and surprise medical bills mostly disappear.",
+      "Freedom. Snowbirds, travelers, and anyone who wants to choose their own doctors keep full control.",
+      "Your coverage can't be changed or canceled because of your health, as long as you pay the premium."
+    ]},
+  medadv:{tag:"Medicare",title:"Medicare Advantage",
+    how:[
+      "Instead of using Original Medicare directly, a private insurance company bundles your hospital, medical, and usually drug coverage into one plan.",
+      "Most plans have a low or even $0 monthly premium. You pay copays and coinsurance as you use care, up to an annual out-of-pocket maximum.",
+      "You use the plan's network of doctors and hospitals, and some services need plan approval before you get them.",
+      "Many plans include extras Original Medicare doesn't: dental, vision, hearing, even gym memberships."
+    ],
+    why:[
+      "If you're healthy, stay local, and your doctors are in-network, the low monthly cost can be hard to beat.",
+      "The extras have real value if you'd actually use them.",
+      "One honest caution: plans and networks change every year, and switching to a Supplement later may require health questions — so the choice deserves real thought up front."
+    ]},
+  ltc:{tag:"Long-Term Care",title:"Long-Term Care Insurance",
+    how:[
+      "Long-term care is help with everyday living — bathing, dressing, eating, moving around — at home, in assisted living, or in a nursing home.",
+      "Here's the part most people don't know: Medicare and health insurance do not cover this kind of ongoing care. In Florida, it can run $9,000–$11,000 a month out of your own pocket.",
+      "LTC insurance pays a monthly benefit toward that care once a doctor certifies you need help with daily activities or have a cognitive condition.",
+      "Modern 'hybrid' policies are built into life insurance: if you need care, the policy pays for it. If you never do, your family receives a death benefit instead. Nothing is wasted."
+    ],
+    why:[
+      "It protects the savings you spent a lifetime building from being drained by a care event.",
+      "It protects your family more — without a plan, the caregiving usually lands on a spouse or daughter, physically and financially.",
+      "You buy it with your health and pay with your money. The younger and healthier you are, the cheaper it is — waiting only raises the price or closes the door."
+    ]}
+};
+
+/* ============ Modals ============ */
+const contactOverlay = document.getElementById('contact-overlay');
+const learnOverlay = document.getElementById('learn-overlay');
+const learnModal = document.getElementById('learn-modal');
+let lastFocus = null;
+
+function openModal(overlay){
+  lastFocus = document.activeElement;
+  overlay.classList.add('open');
+  document.body.style.overflow='hidden';
+  const c = overlay.querySelector('.modal-close');
+  if(c) c.focus();
+}
+function closeModals(){
+  [contactOverlay,learnOverlay].forEach(o=>o.classList.remove('open'));
+  document.body.style.overflow='';
+  if(lastFocus) lastFocus.focus();
+}
+function openLearn(key){
+  const d = LEARN[key];
+  learnModal.innerHTML = `
+    <button class="modal-close" data-close aria-label="Close">
+      <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 2l9 9M11 2l-9 9" stroke="#48484d" stroke-width="1.8" stroke-linecap="round"/></svg>
+    </button>
+    <span class="learn-tag">${d.tag}</span>
+    <h2>${d.title}</h2>
+    <h4>How it works</h4>
+    <ul>${d.how.map(x=>`<li>${ICON_DOT}<span>${x}</span></li>`).join('')}</ul>
+    <h4>Why people choose it</h4>
+    <ul>${d.why.map(x=>`<li>${ICON_CHECK}<span>${x}</span></li>`).join('')}</ul>
+    <div style="margin-top:26px"><button class="btn-primary" data-open-contact style="width:100%">Ask a question about ${d.title}</button></div>
+    <p class="modal-foot">Educational summary only — simplified for clarity. Product features, availability, and pricing vary by carrier, state, age, and underwriting. Not an offer of coverage or a recommendation. Speak with a licensed agent about your situation.</p>`;
+  openModal(learnOverlay);
+}
+
+document.addEventListener('click', (e)=>{
+  const openC = e.target.closest('[data-open-contact]');
+  if(openC){ closeModals(); openModal(contactOverlay); return; }
+  const card = e.target.closest('[data-learn]');
+  if(card){ openLearn(card.dataset.learn); return; }
+  if(e.target.closest('[data-close]')) { closeModals(); return; }
+  if(e.target.classList && e.target.classList.contains('modal-overlay')) closeModals();
+});
+document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') closeModals(); });
+
+renderIntro('life');
+</script>
 </body>
 </html>
