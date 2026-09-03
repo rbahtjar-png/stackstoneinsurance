@@ -1050,7 +1050,7 @@ function closeModals(){
 }
 function openContact(){
   closeModals();
-  const topic = (state && TOPIC_LABELS[state.quizId]) || lastTopic;
+  const topic = lastTopic || (state && TOPIC_LABELS[state.quizId]) || '';
   const sel = document.getElementById('ask-topic');
   if(sel){
     sel.value = [...sel.options].some(o=>o.value===topic) ? topic : '';
