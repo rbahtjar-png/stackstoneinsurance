@@ -22,6 +22,8 @@
 <meta name="twitter:title" content="Stackstone — Find the coverage that fits your life">
 <meta name="twitter:description" content="Three guided assessments for life insurance, Medicare, and long-term care.">
 <meta name="twitter:image" content="https://stackstoneinsurance.com/og-image.png">
+<meta name="twitter:image:alt" content="Stackstone — guided coverage assessments">
+<link rel="canonical" href="https://stackstoneinsurance.com/">
 
 <!-- Favicon -->
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cellipse cx='12' cy='19' rx='9' ry='3.4' fill='%23141416'/%3E%3Cellipse cx='12' cy='13.4' rx='6.6' ry='2.9' fill='%2348484d'/%3E%3Cellipse cx='12' cy='8.6' rx='4.6' ry='2.4' fill='%23a47e4e'/%3E%3Cellipse cx='12' cy='4.6' rx='2.7' ry='1.7' fill='%23141416'/%3E%3C/svg%3E">
@@ -235,6 +237,7 @@ footer{border-top:1px solid var(--hairline);background:var(--mist)}
 .foot-inner{max-width:1040px;margin:0 auto;padding:48px 24px 56px}
 .foot-brand{display:flex;align-items:center;gap:9px;margin-bottom:18px;font-weight:600;font-size:14px}
 .foot-inner p{font-size:12px;color:var(--stone);line-height:1.65;max-width:760px;margin-bottom:12px}
+.foot-inner a{color:var(--ink-soft);text-underline-offset:2px}
 .foot-inner .legal-strong{color:var(--ink-soft)}
 
 /* ---------- Learn section ---------- */
@@ -329,7 +332,7 @@ footer{border-top:1px solid var(--hairline);background:var(--mist)}
       </svg>
       <span class="brand-name">Stackstone</span>
     </a>
-    <button class="nav-cta" data-open-contact>Talk to an agent</button>
+    <button type="button" class="nav-cta" data-open-contact>Talk to an agent</button>
   </div>
 </nav>
 
@@ -346,12 +349,12 @@ footer{border-top:1px solid var(--hairline);background:var(--mist)}
 <main class="assess" id="assess">
   <div class="seg-wrap">
     <div class="seg" role="tablist" aria-label="Coverage type">
-      <button role="tab" id="tab-life" aria-selected="true" data-quiz="life">Life Insurance</button>
-      <button role="tab" id="tab-medicare" aria-selected="false" data-quiz="medicare">Medicare</button>
-      <button role="tab" id="tab-ltc" aria-selected="false" data-quiz="ltc">Long-Term Care</button>
+      <button type="button" role="tab" id="tab-life" aria-selected="true" aria-controls="stage" data-quiz="life">Life Insurance</button>
+      <button type="button" role="tab" id="tab-medicare" aria-selected="false" aria-controls="stage" data-quiz="medicare">Medicare</button>
+      <button type="button" role="tab" id="tab-ltc" aria-selected="false" aria-controls="stage" data-quiz="ltc">Long-Term Care</button>
     </div>
   </div>
-  <div class="stage" id="stage" aria-live="polite"></div>
+  <div class="stage" id="stage" role="tabpanel" aria-labelledby="tab-life" aria-live="polite"></div>
 </main>
 
 <section class="learn" id="learn">
@@ -361,37 +364,37 @@ footer{border-top:1px solid var(--hairline);background:var(--mist)}
       <p>Plain-English explanations of every product on this site. No jargon, no pressure — just how each one works and who it's built for.</p>
     </div>
     <div class="learn-grid">
-      <button class="learn-card" data-learn="term">
+      <button type="button" class="learn-card" data-learn="term">
         <span class="learn-tag">Life Insurance</span>
         <h3>Term Life</h3>
         <p>Affordable protection for the years your family depends on your paycheck.</p>
         <span class="learn-more">How it works →</span>
       </button>
-      <button class="learn-card" data-learn="whole">
+      <button type="button" class="learn-card" data-learn="whole">
         <span class="learn-tag">Life Insurance</span>
         <h3>Whole Life</h3>
         <p>Coverage that lasts your entire life, with a payment that never goes up.</p>
         <span class="learn-more">How it works →</span>
       </button>
-      <button class="learn-card" data-learn="iul">
+      <button type="button" class="learn-card" data-learn="iul">
         <span class="learn-tag">Life Insurance</span>
         <h3>Indexed Universal Life</h3>
         <p>Lifetime protection plus a savings engine tied to the market — with a safety floor.</p>
         <span class="learn-more">How it works →</span>
       </button>
-      <button class="learn-card" data-learn="medsupp">
+      <button type="button" class="learn-card" data-learn="medsupp">
         <span class="learn-tag">Medicare</span>
         <h3>Medicare Supplement</h3>
         <p>Fills the gaps Medicare leaves behind. Any doctor who takes Medicare, anywhere.</p>
         <span class="learn-more">How it works →</span>
       </button>
-      <button class="learn-card" data-learn="medadv">
+      <button type="button" class="learn-card" data-learn="medadv">
         <span class="learn-tag">Medicare</span>
         <h3>Medicare Advantage</h3>
         <p>An all-in-one private plan, often with a low premium and extra perks.</p>
         <span class="learn-more">How it works →</span>
       </button>
-      <button class="learn-card" data-learn="ltc">
+      <button type="button" class="learn-card" data-learn="ltc">
         <span class="learn-tag">Long-Term Care</span>
         <h3>Long-Term Care Insurance</h3>
         <p>Covers the everyday care Medicare won't — so your savings and family don't have to.</p>
@@ -404,8 +407,8 @@ footer{border-top:1px solid var(--hairline);background:var(--mist)}
 <!-- Contact modal -->
 <div class="modal-overlay" id="contact-overlay" role="dialog" aria-modal="true" aria-labelledby="contact-title">
   <div class="modal">
-    <button class="modal-close" data-close aria-label="Close">
-      <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 2l9 9M11 2l-9 9" stroke="#48484d" stroke-width="1.8" stroke-linecap="round"/></svg>
+    <button type="button" class="modal-close" data-close aria-label="Close">
+      <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true"><path d="M2 2l9 9M11 2l-9 9" stroke="#48484d" stroke-width="1.8" stroke-linecap="round"/></svg>
     </button>
     <h2 id="contact-title">Let's talk it through.</h2>
     <p class="modal-sub">No obligation, no pressure. Reach out however you're most comfortable.</p>
@@ -426,7 +429,7 @@ footer{border-top:1px solid var(--hairline);background:var(--mist)}
 </div>
 
 <!-- Learn modal -->
-<div class="modal-overlay" id="learn-overlay" role="dialog" aria-modal="true">
+<div class="modal-overlay" id="learn-overlay" role="dialog" aria-modal="true" aria-labelledby="learn-title">
   <div class="modal wide" id="learn-modal"></div>
 </div>
 
@@ -442,18 +445,17 @@ footer{border-top:1px solid var(--hairline);background:var(--mist)}
       Stackstone
     </div>
     <p class="legal-strong">These assessments are educational tools only. Results are general directions based on your answers — not insurance advice, a recommendation to buy or replace any policy, an offer of coverage, or a guarantee of eligibility, rates, or benefits. Product availability, features, and pricing vary by carrier, state, age, and underwriting.</p>
-    <p>Stackstone is not connected with or endorsed by the United States government or the federal Medicare program. We do not offer every plan available in your area. Please contact Medicare.gov or 1‑800‑MEDICARE to get information on all of your options.</p>
+    <p>Stackstone is not connected with or endorsed by the United States government or the federal Medicare program. We do not offer every plan available in your area. Please contact <a href="https://www.medicare.gov/">Medicare.gov</a> or <a href="tel:+18006334227">1‑800‑MEDICARE</a> to get information on all of your options.</p>
     <p>Before purchasing or replacing any insurance policy, speak with a licensed insurance agent about your complete financial picture. Replacing existing coverage may have consequences and requires careful comparison.</p>
-    <p>Bahtjar Rexha, Licensed Insurance Agent · Florida License #YOUR_LICENSE_NUMBER · stackstonellc.fl@gmail.com · (352) 987-8197</p>
+    <p>Bahtjar Rexha, Licensed Insurance Agent · Florida License #W951482 · also licensed in Maryland and Michigan · stackstonellc.fl@gmail.com · (352) 987-8197</p>
     <p>© 2026 Stackstone. All rights reserved.</p>
   </div>
 </footer>
 
 <script>
 /* ============ Quiz data ============ */
-const CONTACT_EMAIL = "stackstonellc.fl@gmail.com"; // <-- replace
-const ICON_CHECK = '<svg width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M2.5 8l3.2 3.2L12.5 4" stroke="#1f7a55" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
-const ICON_DOT = '<svg width="15" height="15" viewBox="0 0 15 15" fill="none"><circle cx="7.5" cy="8" r="3" fill="#a47e4e"/></svg>';
+const ICON_CHECK = '<svg width="15" height="15" viewBox="0 0 15 15" fill="none" aria-hidden="true"><path d="M2.5 8l3.2 3.2L12.5 4" stroke="#1f7a55" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+const ICON_DOT = '<svg width="15" height="15" viewBox="0 0 15 15" fill="none" aria-hidden="true"><circle cx="7.5" cy="8" r="3" fill="#a47e4e"/></svg>';
 
 const QUIZZES = {
 
@@ -733,7 +735,14 @@ function startState(quizId){
   return { quizId, phase:1, idx:0, scores:{}, reasons:[], history:[] };
 }
 
-function renderIntro(quizId){
+function focusStageHeading(){
+  const el = stage.querySelector('h2');
+  if(!el) return;
+  el.setAttribute('tabindex','-1');
+  el.focus({preventScroll:true});
+}
+
+function renderIntro(quizId, restoreFocus){
   const q = QUIZZES[quizId];
   stage.innerHTML = `
     <div class="panel intro-card">
@@ -741,12 +750,13 @@ function renderIntro(quizId){
       <h2>${q.title}</h2>
       <p>${q.intro}</p>
       <div class="intro-meta">${q.meta}</div>
-      <button class="btn-primary" id="start-btn">Start the assessment</button>
+      <button type="button" class="btn-primary" id="start-btn">Start the assessment</button>
     </div>`;
   document.getElementById('start-btn').onclick = ()=>{
     state = startState(quizId);
     renderQuestion();
   };
+  if(restoreFocus) focusStageHeading();
 }
 
 function activeQuestions(){
@@ -769,8 +779,8 @@ function renderQuestion(){
   stage.innerHTML = `
     <div class="panel">
       <div class="progress">
-        <button class="progress-back" id="back-btn" aria-label="Go back">
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M9 2 4 7l5 5" stroke="#48484d" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <button type="button" class="progress-back" id="back-btn" aria-label="Go back">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M9 2 4 7l5 5" stroke="#48484d" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </button>
         <div class="progress-track"><div class="progress-fill" style="width:${pct}%"></div></div>
         <div class="progress-count">${state.idx+1} of ${total}${state.phase===2?' · part two':''}</div>
@@ -780,8 +790,8 @@ function renderQuestion(){
       ${item.help?`<p class="q-help">${item.help}</p>`:'<div style="height:20px"></div>'}
       <div class="options">
         ${item.opts.map((o,i)=>`
-          <button class="opt" data-i="${i}">
-            <span class="opt-key">${letters[i]}</span>
+          <button type="button" class="opt" data-i="${i}">
+            <span class="opt-key" aria-hidden="true">${letters[i]}</span>
             <span>${o.t}${o.sub?`<span class="opt-sub">${o.sub}</span>`:''}</span>
           </button>`).join('')}
       </div>
@@ -791,6 +801,7 @@ function renderQuestion(){
   stage.querySelectorAll('.opt').forEach(btn=>{
     btn.onclick = ()=> choose(parseInt(btn.dataset.i,10));
   });
+  focusStageHeading();
 }
 
 function choose(i){
@@ -805,7 +816,7 @@ function choose(i){
 }
 
 function goBack(){
-  if(state.history.length===0){ renderIntro(state.quizId); state=null; return; }
+  if(state.history.length===0){ renderIntro(state.quizId, true); state=null; return; }
   const last = state.history.pop();
   for(const k in (last.opt.s||{})) state.scores[k]-=last.opt.s[k];
   if(last.opt.r) state.reasons.pop();
@@ -880,14 +891,15 @@ function renderResult(key){
           <p>A short, no-obligation conversation with a licensed agent.</p>
         </div>
         <div class="result-cta-btns">
-          <button class="btn-light" data-open-contact>Schedule a conversation</button>
-          <button class="btn-outline" id="retake-btn">Retake</button>
+          <button type="button" class="btn-light" data-open-contact>Schedule a conversation</button>
+          <button type="button" class="btn-outline" id="retake-btn">Retake</button>
         </div>
       </div>
       <p class="result-note">This result is an educational starting point based only on your answers — not insurance advice, a recommendation to buy or replace coverage, or an offer of any product. Plan availability, pricing, and eligibility depend on your state, age, health, and carrier underwriting. A licensed agent can review your complete situation.</p>
     </div>`;
-  document.getElementById('retake-btn').onclick = ()=> renderIntro(state.quizId);
+  document.getElementById('retake-btn').onclick = ()=> renderIntro(state.quizId, true);
   stage.scrollIntoView({behavior:'smooth', block:'start'});
+  focusStageHeading();
 }
 
 /* ---------- tabs ---------- */
@@ -895,8 +907,9 @@ tabs.forEach(tab=>{
   tab.addEventListener('click', ()=>{
     tabs.forEach(t=>t.setAttribute('aria-selected','false'));
     tab.setAttribute('aria-selected','true');
+    stage.setAttribute('aria-labelledby', tab.id);
     state = null;
-    renderIntro(tab.dataset.quiz);
+    renderIntro(tab.dataset.quiz, true);
   });
 });
 
@@ -997,18 +1010,25 @@ function closeModals(){
 function openLearn(key){
   const d = LEARN[key];
   learnModal.innerHTML = `
-    <button class="modal-close" data-close aria-label="Close">
-      <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 2l9 9M11 2l-9 9" stroke="#48484d" stroke-width="1.8" stroke-linecap="round"/></svg>
+    <button type="button" class="modal-close" data-close aria-label="Close">
+      <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true"><path d="M2 2l9 9M11 2l-9 9" stroke="#48484d" stroke-width="1.8" stroke-linecap="round"/></svg>
     </button>
     <span class="learn-tag">${d.tag}</span>
-    <h2>${d.title}</h2>
+    <h2 id="learn-title">${d.title}</h2>
     <h4>How it works</h4>
     <ul>${d.how.map(x=>`<li>${ICON_DOT}<span>${x}</span></li>`).join('')}</ul>
     <h4>Why people choose it</h4>
     <ul>${d.why.map(x=>`<li>${ICON_CHECK}<span>${x}</span></li>`).join('')}</ul>
-    <div style="margin-top:26px"><button class="btn-primary" data-open-contact style="width:100%">Ask a question about ${d.title}</button></div>
+    <div style="margin-top:26px"><button type="button" class="btn-primary" data-open-contact style="width:100%">Ask a question about ${d.title}</button></div>
     <p class="modal-foot">Educational summary only — simplified for clarity. Product features, availability, and pricing vary by carrier, state, age, and underwriting. Not an offer of coverage or a recommendation. Speak with a licensed agent about your situation.</p>`;
   openModal(learnOverlay);
+}
+
+function openOverlay(){
+  return [contactOverlay,learnOverlay].find(o=>o.classList.contains('open'));
+}
+function focusableIn(overlay){
+  return [...overlay.querySelectorAll('a[href],button:not([disabled])')];
 }
 
 document.addEventListener('click', (e)=>{
@@ -1019,7 +1039,24 @@ document.addEventListener('click', (e)=>{
   if(e.target.closest('[data-close]')) { closeModals(); return; }
   if(e.target.classList && e.target.classList.contains('modal-overlay')) closeModals();
 });
-document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') closeModals(); });
+document.addEventListener('keydown', (e)=>{
+  if(e.key==='Escape') closeModals();
+  const overlay = openOverlay();
+  if(overlay){
+    if(e.key!=='Tab') return;
+    const list = focusableIn(overlay);
+    if(!list.length) return;
+    const first = list[0], last = list[list.length-1];
+    if(e.shiftKey && document.activeElement===first){ e.preventDefault(); last.focus(); }
+    else if(!e.shiftKey && document.activeElement===last){ e.preventDefault(); first.focus(); }
+    return;
+  }
+  if(e.metaKey || e.ctrlKey || e.altKey) return;
+  const optBtns = stage.querySelectorAll('.opt');
+  if(!optBtns.length) return;
+  const idx = ['A','B','C','D','E'].indexOf(e.key.toUpperCase());
+  if(idx>=0 && optBtns[idx]){ e.preventDefault(); optBtns[idx].click(); }
+});
 
 renderIntro('life');
 </script>
