@@ -306,6 +306,20 @@ footer{border-top:1px solid var(--hairline);background:var(--mist)}
 .modal li{display:flex;gap:10px;font-size:14.5px;line-height:1.5}
 .modal li svg{flex:none;margin-top:4px}
 .modal-foot{font-size:11.5px;color:var(--stone);line-height:1.55;margin-top:22px;padding-top:16px;border-top:1px solid var(--hairline)}
+.ask-form{display:grid;gap:10px}
+.ask-form label{font-size:12px;font-weight:600;color:var(--ink-soft)}
+.ask-form input,.ask-form select,.ask-form textarea{
+  width:100%;font:inherit;font-size:15px;color:var(--ink);
+  padding:12px 14px;border:1.5px solid var(--hairline);border-radius:var(--radius-md);
+  background:var(--mist);
+}
+.ask-form textarea{min-height:88px;resize:vertical;line-height:1.45}
+.ask-form .btn-primary{width:100%;margin-top:4px}
+.ask-status{font-size:13.5px;color:var(--stone);line-height:1.45;min-height:1.2em}
+.ask-status.ok{color:var(--good)}
+.ask-alt{font-size:13px;color:var(--stone);line-height:1.5;margin-top:8px}
+.ask-alt a{color:var(--ink-soft)}
+.hp{position:absolute;left:-9999px;height:0;width:0;overflow:hidden}
 
 @media (max-width:560px){
   .seg button{padding:9px 14px;font-size:13px}
@@ -410,21 +424,40 @@ footer{border-top:1px solid var(--hairline);background:var(--mist)}
     <button type="button" class="modal-close" data-close aria-label="Close">
       <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true"><path d="M2 2l9 9M11 2l-9 9" stroke="#48484d" stroke-width="1.8" stroke-linecap="round"/></svg>
     </button>
-    <h2 id="contact-title">How to reach me.</h2>
-    <p class="modal-sub">If you have a question, you can text, call, or email. No appointment needed.</p>
-    <a class="contact-opt" href="sms:+13529878197">
-      <span class="contact-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 2.5c-4.4 0-8 3-8 6.7 0 2 1 3.8 2.7 5l-.7 3.3 3.5-1.7c.8.2 1.6.3 2.5.3 4.4 0 8-3 8-6.9s-3.6-6.7-8-6.7z" fill="#a47e4e"/></svg></span>
-      <span><strong>Send a text</strong><span>Usually the fastest way to reach me</span></span>
-    </a>
-    <a class="contact-opt" href="tel:+13529878197">
-      <span class="contact-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4.2 2.8c.5-.5 1.3-.5 1.8 0l1.9 1.9c.5.5.5 1.3 0 1.8l-1 1c.9 1.7 2.3 3.1 4 4l1-1c.5-.5 1.3-.5 1.8 0l1.9 1.9c.5.5.5 1.3 0 1.8l-1.1 1.1c-.8.8-2 .9-3 .4-4-2-7.2-5.2-9.1-9.1-.5-1-.3-2.2.4-3l1.4-1.8z" fill="#141416"/></svg></span>
-      <span><strong>Call me</strong><span>If you'd rather just talk</span></span>
-    </a>
-    <a class="contact-opt" href="mailto:stackstonellc.fl@gmail.com?subject=Question%20from%20stackstoneinsurance.com">
-      <span class="contact-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="2" y="4" width="16" height="12" rx="2.5" fill="#86868b"/><path d="m3 5.5 7 5.5 7-5.5" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-      <span><strong>Send an email</strong><span>Good for details and documents</span></span>
-    </a>
-    <p class="modal-foot">By calling or texting, you're reaching out to a licensed insurance agent. Standard message and data rates may apply. You're under no obligation to purchase anything.</p>
+    <h2 id="contact-title">Send a note.</h2>
+    <p class="modal-sub">Optional — everything on this page is already yours. If you'd like Bahtjar to follow up, leave your name and how to reach you.</p>
+    <form class="ask-form" id="ask-form">
+      <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off">
+      <div>
+        <label for="ask-name">Name</label>
+        <input id="ask-name" name="name" type="text" autocomplete="name" required>
+      </div>
+      <div>
+        <label for="ask-phone">Phone</label>
+        <input id="ask-phone" name="phone" type="tel" autocomplete="tel" required>
+      </div>
+      <div>
+        <label for="ask-email">Email</label>
+        <input id="ask-email" name="email" type="email" autocomplete="email" required>
+      </div>
+      <div>
+        <label for="ask-topic">Topic</label>
+        <select id="ask-topic" name="topic">
+          <option value="">Choose one</option>
+          <option value="Life insurance">Life insurance</option>
+          <option value="Medicare">Medicare</option>
+          <option value="Long-term care">Long-term care</option>
+        </select>
+      </div>
+      <div>
+        <label for="ask-note">Note <span style="font-weight:400;color:var(--stone)">(optional)</span></label>
+        <textarea id="ask-note" name="message" maxlength="1000" placeholder="Anything you want him to know"></textarea>
+      </div>
+      <button type="submit" class="btn-primary" id="ask-submit">Send</button>
+      <p class="ask-status" id="ask-status" role="status"></p>
+    </form>
+    <p class="ask-alt">Or email <a href="mailto:stackstonellc.fl@gmail.com">stackstonellc.fl@gmail.com</a> · call <a href="tel:+13529878197">(352) 987-8197</a></p>
+    <p class="modal-foot">This sends a note to a licensed insurance agent. You're under no obligation to purchase anything.</p>
   </div>
 </div>
 
@@ -454,6 +487,12 @@ footer{border-top:1px solid var(--hairline);background:var(--mist)}
 
 <script>
 /* ============ Quiz data ============ */
+/* Web3Forms access key — paste the key emailed after confirming stackstonellc.fl@gmail.com at https://web3forms.com */
+const WEB3FORMS_ACCESS_KEY = "";
+const TOPIC_LABELS = { life:"Life insurance", medicare:"Medicare", ltc:"Long-term care" };
+const LEARN_TOPIC = { term:"Life insurance", whole:"Life insurance", iul:"Life insurance", medsupp:"Medicare", medadv:"Medicare", ltc:"Long-term care" };
+let lastTopic = "";
+
 const ICON_CHECK = '<svg width="15" height="15" viewBox="0 0 15 15" fill="none" aria-hidden="true"><path d="M2.5 8l3.2 3.2L12.5 4" stroke="#1f7a55" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
 const ICON_DOT = '<svg width="15" height="15" viewBox="0 0 15 15" fill="none" aria-hidden="true"><circle cx="7.5" cy="8" r="3" fill="#a47e4e"/></svg>';
 
@@ -732,6 +771,7 @@ const tabs = document.querySelectorAll('.seg button');
 let state = null;
 
 function startState(quizId){
+  lastTopic = TOPIC_LABELS[quizId] || lastTopic;
   return { quizId, phase:1, idx:0, scores:{}, reasons:[], history:[] };
 }
 
@@ -867,6 +907,7 @@ function reasonsFor(key){
 
 function renderResult(key){
   const quiz = QUIZZES[state.quizId];
+  lastTopic = TOPIC_LABELS[state.quizId] || lastTopic;
   const res = quiz.results[key];
   const why = reasonsFor(key);
   stage.innerHTML = `
@@ -887,11 +928,11 @@ function renderResult(key){
       </div>
       <div class="result-cta">
         <div>
-          <h3>Questions about this result?</h3>
-          <p>You can reach a licensed agent if you want a person to walk through it.</p>
+          <h3>Want to talk this through?</h3>
+          <p>Optional — the result above is already yours. Leave a note if you'd like an agent to follow up.</p>
         </div>
         <div class="result-cta-btns">
-          <button type="button" class="btn-light" data-open-contact>Contact</button>
+          <button type="button" class="btn-light" data-open-contact>Send a note</button>
           <button type="button" class="btn-outline" id="retake-btn">Retake</button>
         </div>
       </div>
@@ -1007,7 +1048,24 @@ function closeModals(){
   document.body.style.overflow='';
   if(lastFocus) lastFocus.focus();
 }
+function openContact(){
+  closeModals();
+  const topic = (state && TOPIC_LABELS[state.quizId]) || lastTopic;
+  const sel = document.getElementById('ask-topic');
+  if(sel){
+    sel.value = [...sel.options].some(o=>o.value===topic) ? topic : '';
+  }
+  const status = document.getElementById('ask-status');
+  if(status && !status.classList.contains('ok')){
+    status.textContent = '';
+    status.classList.remove('ok');
+  }
+  openModal(contactOverlay);
+  const name = document.getElementById('ask-name');
+  if(name) name.focus();
+}
 function openLearn(key){
+  lastTopic = LEARN_TOPIC[key] || lastTopic;
   const d = LEARN[key];
   learnModal.innerHTML = `
     <button type="button" class="modal-close" data-close aria-label="Close">
@@ -1019,6 +1077,7 @@ function openLearn(key){
     <ul>${d.how.map(x=>`<li>${ICON_DOT}<span>${x}</span></li>`).join('')}</ul>
     <h4>Why people choose it</h4>
     <ul>${d.why.map(x=>`<li>${ICON_CHECK}<span>${x}</span></li>`).join('')}</ul>
+    <div style="margin-top:22px"><button type="button" class="btn-ghost" data-open-contact>Questions? Send a note</button></div>
     <p class="modal-foot">Educational summary only — simplified for clarity. Product features, availability, and pricing vary by carrier, state, age, and underwriting. Not an offer of coverage or a recommendation.</p>`;
   openModal(learnOverlay);
 }
@@ -1027,12 +1086,12 @@ function openOverlay(){
   return [contactOverlay,learnOverlay].find(o=>o.classList.contains('open'));
 }
 function focusableIn(overlay){
-  return [...overlay.querySelectorAll('a[href],button:not([disabled])')];
+  return [...overlay.querySelectorAll('a[href],button:not([disabled]),input:not([type="hidden"]):not(.hp),select,textarea')];
 }
 
 document.addEventListener('click', (e)=>{
   const openC = e.target.closest('[data-open-contact]');
-  if(openC){ closeModals(); openModal(contactOverlay); return; }
+  if(openC){ openContact(); return; }
   const card = e.target.closest('[data-learn]');
   if(card){ openLearn(card.dataset.learn); return; }
   if(e.target.closest('[data-close]')) { closeModals(); return; }
@@ -1051,10 +1110,64 @@ document.addEventListener('keydown', (e)=>{
     return;
   }
   if(e.metaKey || e.ctrlKey || e.altKey) return;
+  if(e.target && e.target.closest && e.target.closest('input,textarea,select')) return;
   const optBtns = stage.querySelectorAll('.opt');
   if(!optBtns.length) return;
   const idx = ['A','B','C','D','E'].indexOf(e.key.toUpperCase());
   if(idx>=0 && optBtns[idx]){ e.preventDefault(); optBtns[idx].click(); }
+});
+
+const askForm = document.getElementById('ask-form');
+const askStatus = document.getElementById('ask-status');
+const askSubmit = document.getElementById('ask-submit');
+
+askForm.addEventListener('submit', async (e)=>{
+  e.preventDefault();
+  const name = document.getElementById('ask-name').value.trim();
+  const phone = document.getElementById('ask-phone').value.trim();
+  const email = document.getElementById('ask-email').value.trim();
+  const topic = document.getElementById('ask-topic').value;
+  const note = document.getElementById('ask-note').value.trim();
+  const honeypot = askForm.querySelector('[name="botcheck"]');
+  askStatus.classList.remove('ok');
+  if(!name || !phone || !email){
+    askStatus.textContent = 'Name, phone, and email are needed so he can reply.';
+    return;
+  }
+  if(!WEB3FORMS_ACCESS_KEY){
+    askStatus.textContent = 'This form isn’t connected yet. Email stackstonellc.fl@gmail.com or call (352) 987-8197.';
+    return;
+  }
+  askSubmit.disabled = true;
+  askStatus.textContent = 'Sending…';
+  try{
+    const payload = {
+      access_key: WEB3FORMS_ACCESS_KEY,
+      subject: topic ? `Stackstone site — ${topic}` : 'Stackstone site — question',
+      from_name: 'Stackstone',
+      name, phone, email,
+      topic: topic || '(not specified)',
+      message: note || '(no note)',
+      botcheck: honeypot && honeypot.checked ? '1' : ''
+    };
+    const res = await fetch('https://api.web3forms.com/submit', {
+      method:'POST',
+      headers:{ 'Content-Type':'application/json', 'Accept':'application/json' },
+      body: JSON.stringify(payload)
+    });
+    const data = await res.json().catch(()=>({}));
+    if(!res.ok || data.success===false){
+      throw new Error(data.message || 'Send failed');
+    }
+    askForm.reset();
+    if(topic) document.getElementById('ask-topic').value = topic;
+    askStatus.classList.add('ok');
+    askStatus.textContent = 'Sent. He’ll follow up by email or phone.';
+  }catch(err){
+    askStatus.textContent = 'Couldn’t send just now. Email stackstonellc.fl@gmail.com or call (352) 987-8197.';
+  }finally{
+    askSubmit.disabled = false;
+  }
 });
 
 renderIntro('life');
